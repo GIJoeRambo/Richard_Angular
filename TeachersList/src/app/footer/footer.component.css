@@ -1,0 +1,15 @@
+.tl_footer{
+    width:100%;
+    min-height: 80px;
+    background: #272822;
+
+    text-align:center;
+    color:white;
+    font-weight: bold;
+    line-height: 80px;
+    font-size: 50px;
+}
+
+.tl_footer p{
+    margin:0;
+}
