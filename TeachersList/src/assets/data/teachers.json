@@ -1,5 +1,7 @@
 [
-    {"id":1,"firstName":"Richard","lastName":"Wang","gender":"male"},
-    {"id":1,"firstName":"Renee","lastName":"Li","gender":"female"},
-    {"id":1,"firstName":"Richard","lastName":"Wang","gender":"male"} 
+    {"id":1,"firstName":"Richard","lastName":"Wang","gender":"male","dob":"1993/02/02","irdNumber":"21324324",
+        "idType":"passport","language":["chinese","English","Russian","cantonese"]},
+    {"id":1,"firstName":"Renee","lastName":"Li","gender":"female","language":["chinese"]},
+    {"id":1,"firstName":"Moci","lastName":"xu","gender":"female"} 
+
 ]

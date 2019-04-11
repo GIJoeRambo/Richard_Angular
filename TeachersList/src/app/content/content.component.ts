@@ -9,6 +9,7 @@ import { TeachersService } from '../teachers.service';
 export class ContentComponent implements OnInit {
   public teachers:any = [];
   private data:any ={};
+  private genderFlag = 'oo';
 
   constructor(private teachersService:TeachersService) { }
 
