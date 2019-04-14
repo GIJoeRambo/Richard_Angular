@@ -23,12 +23,6 @@
               "src/assets"
             ],
             "styles": [
-<<<<<<< HEAD
-              "node_modules/bootstrap/dist/css/bootstrap.css",
-              "src/styles.css"
-            ],
-            "scripts": [],
-=======
               "node_modules/@fortawesome/fontawesome-free/css/all.css",
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
@@ -36,7 +30,6 @@
             "scripts": [
              
             ],
->>>>>>> 813b645ea06e2119eea7c041df9f8d7235bd83ff
             "es5BrowserSupport": true
           },
           "configurations": {
