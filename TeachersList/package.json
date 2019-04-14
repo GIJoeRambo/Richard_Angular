@@ -21,6 +21,10 @@
     "@angular/router": "~7.2.0",
     "bootstrap": "^4.3.1",
     "core-js": "^2.5.4",
+<<<<<<< HEAD
+=======
+    "fontawesome": "^5.6.3",
+>>>>>>> 813b645ea06e2119eea7c041df9f8d7235bd83ff
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"
@@ -30,9 +34,16 @@
     "@angular/cli": "~7.3.7",
     "@angular/compiler-cli": "~7.2.0",
     "@angular/language-service": "~7.2.0",
+<<<<<<< HEAD
     "@types/node": "~8.9.4",
     "@types/jasmine": "~2.8.8",
     "@types/jasminewd2": "~2.0.3",
+=======
+    "@fortawesome/fontawesome-free": "^5.8.1",
+    "@types/jasmine": "~2.8.8",
+    "@types/jasminewd2": "~2.0.3",
+    "@types/node": "~8.9.4",
+>>>>>>> 813b645ea06e2119eea7c041df9f8d7235bd83ff
     "codelyzer": "~4.5.0",
     "jasmine-core": "~2.99.1",
     "jasmine-spec-reporter": "~4.2.1",

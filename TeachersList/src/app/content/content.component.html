@@ -1,4 +1,5 @@
 <div class='container'>
+<<<<<<< HEAD
     <div *ngFor='let i of teachers' class='row tl_content'>
         <div class='tl_content_left col-lg-3 col-md-3 col-sm-12'>
             <img src="" alt="">
@@ -93,3 +94,9 @@
 
     </div>
 </div>
+=======
+  <app-lists (childEvent)='message=$event' (iEvent) = 'teacher=$event'></app-lists>
+  <app-popup *ngIf='message =="update"' (childEvent2)='message=$event' [teacher]='teacher'></app-popup>
+  <app-shell *ngIf='message =="update"'></app-shell>
+</div>
+>>>>>>> 813b645ea06e2119eea7c041df9f8d7235bd83ff

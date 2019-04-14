@@ -1,0 +1,128 @@
+.row{
+    padding:0px;
+    margin:0px;
+}
+.tl_contain{
+    margin-bottom:10px;
+    padding:0px;
+    width: 100%;
+    min-height: 100px;
+    border: 2px solid lightblue;
+    border-radius: 10px;
+}
+.tl_list_left{
+    padding:0px;
+}
+.tl_list_left img{
+    max-width: 100%;
+    border-radius: 10px;
+}
+.tl_list_left_btns{
+    margin: 0 auto;
+}
+.tl_list_right{
+    padding: 0px;
+}
+.tl_list_right>.row{
+    padding:0 10px;
+}
+.tl_list_right_top{
+    min-height: 70px;
+    font-weight: bold;
+    font-size:25px;
+    line-height: 70px;
+    padding: 0px;
+}
+.tl_list_right_top_dob{
+    font-weight: normal;
+    float: right;
+}
+.tl_list_right_top_icon img{
+    max-width: 30px;
+    margin-left:20px;
+}
+.tl_list_right_middle{
+    min-height: 110px;
+    padding:0px;
+    margin-bottom: 10px;
+}
+.tl_list_right_middle_blocks{
+    padding:0px;
+}
+.tl_list_right_middle_block1,.tl_list_right_middle_block2,.tl_list_right_middle_block3{
+    background: lightblue;
+    border-radius: 5px;
+    min-height: 100%;
+}
+.tl_list_right_middle_block2{
+    margin: 0 10px;
+}
+.tl_list_right_bottom{
+    padding:0;
+    min-height: 200px;
+    margin-bottom:10px;
+    border:1px solid lightblue;
+    border-radius: 5px;
+}
+.tl_list_right_bottom_left{
+    padding:0;
+}
+.tl_list_right_bottom_show{
+    min-height: 50px;
+    font-size: 18px;
+    line-height:50px;
+}
+.tl_list_right_bottom_show_title{
+    padding:0px;
+    margin: 0;
+}
+.tl_list_right_bottom_show_box{
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+.tl_list_right_bottom_right{
+    padding: 0;
+}
+.list_bg{
+    background: lightblue;
+}
+.b{
+    margin-top:50px;
+    min-width: 70%;
+}
+.b:hover{
+    cursor: pointer;
+}
+.tl_list_left_btns{
+    margin: 0 auto;
+    text-align: center;
+}
+
+
+
+
+
+@media screen and (max-width:769px){
+    .tl_list_right_middle_block2{
+        margin: 0;
+        margin: 10px 0;
+    } 
+    .list_bg{
+        background: none;
+    }
+    .list_bg_s{
+        background: lightblue;
+    }
+    .tl_list_right_bottom_show_box{
+        min-width: 50%;
+        text-align: center;
+    } 
+}
+
+@media screen and (max-width:992px){
+    .tl_list_left_btns{
+        margin-top:50px;
+    }
+}
+

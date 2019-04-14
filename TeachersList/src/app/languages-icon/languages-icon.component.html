@@ -1,0 +1,35 @@
+<p>
+  Languages 
+</p>
+
+<!--1-->
+<div class='row' *ngIf='lanLength == 1'>
+  <div class='col-5 p-3 lans lan1_class'>
+    <div class='lan_icon'>{{lan1}}</div>
+  </div>
+</div>
+
+<!--2-->
+<div class='row' *ngIf='lanLength == 2'>
+  <div class='col-6 lans p-3'>
+    <div class='lan_icon'>{{lan1}}</div>
+  </div>
+  <div class='col-6 lans p-3'>
+    <div class='lan_icon'>{{lan2}}</div>
+  </div>
+</div>
+
+
+<!--3-->
+<div class='row' *ngIf='lanLength == -1'>
+  <div class='col-6 lans'>
+    <div class='lan_icon'>{{lan1}}</div>
+  </div>
+  <div class='col-6 lans'>
+    <div class='lan_icon'>{{lan2}}</div>
+  </div>
+  
+  <div class='col-12 lans'>
+    <div class='lan_icon more' (click)='showMore()'>{{showLanRest}}</div>
+  </div>
+</div>

@@ -1,0 +1,101 @@
+<div class='row'>
+  <div *ngFor='let i of teachers' class='col-12 tl_contain'>
+    <div class= 'row'>
+      <div class='col-lg-3 col-md-3 col-sm-12 tl_list_left'>
+        <img src="./assets/img/photo.jpg" alt="">
+        <div class='row tl_list_left_btns'>
+          <div class='col-6'>
+            <div class='btn btn-md btn-info b' (click)='update(i)'>Update</div>
+          </div>
+          <div class='col-6'>
+            <div class='btn btn-md btn-warning b'>Delete</div>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-lg-9 col-md-9 col-sm-12 tl_list_right'>
+        <div class='row'>
+          <div class='tl_list_right_top col-12'>
+            <span>{{i.firstName}} {{i.lastName}}</span> 
+            <span *ngIf = "i.gender =='male'" class='tl_list_right_top_icon'><img src="./assets/img/male.png" alt=""></span>
+            <span *ngIf = "i.gender =='female'" class='tl_list_right_top_icon'><img src="./assets/img/female.png" alt=""></span>
+            <span class='tl_list_right_top_dob'>{{i.dob || 'YYYY/MM/DD'}}</span>
+          </div>
+          <div class='tl_list_right_middle col-12'>
+            <div class='row'>
+              <div class='col-lg-4 col-md-4 col-sm-12 tl_list_right_middle_blocks'>
+                <div class='tl_list_right_middle_block1'>
+                  <app-languages-icon [parentData_lan]='i.languages'></app-languages-icon>
+                </div>
+              </div>
+              <div class='col-lg-4 col-md-4 col-sm-12 tl_list_right_middle_blocks'>
+                <div class='tl_list_right_middle_block2'>2</div>
+              </div>
+              <div class='col-lg-4 col-md-4 col-sm-12 tl_list_right_middle_blocks'>
+                <div class='tl_list_right_middle_block3'>
+                  <app-weeks-icon [parentData_week] = 'i.weeks'></app-weeks-icon>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class='tl_list_right_bottom col-12'>
+            <div class='row'>
+              <div class='tl_list_right_bottom_left col-lg-6 col-md-6 col-sm-12'>
+                  <div class='tl_list_right_bottom_show'>
+                    <div class='row'>
+                      <span class='col-md-5 col-sm-12 tl_list_right_bottom_show_title'>IRD Number:</span>
+                      <span class='tl_list_right_bottom_show_box col-md-7 col-sm-12'>{{i.irdNumber || 'No Data'}}</span>
+                    </div>
+                  </div>
+                  <div class='tl_list_right_bottom_show list_bg list_bg_s'>
+                    <div class='row'>
+                      <span class='col-md-5 col-sm-12 tl_list_right_bottom_show_title'>ID Type:</span>
+                      <span class='tl_list_right_bottom_show_box col-md-7 col-sm-12'>{{i.idType || 'No Data'}}</span>
+                    </div>
+                  </div>
+                  <div class='tl_list_right_bottom_show'>
+                    <div class='row'>
+                      <span class='col-md-5 col-sm-12 tl_list_right_bottom_show_title'>ID Number:</span>
+                      <span class='tl_list_right_bottom_show_box col-md-7 col-sm-12'>{{i.idNumber || 'No Data'}}</span>
+                    </div>
+                  </div>
+                  <div class='tl_list_right_bottom_show list_bg list_bg_s'>
+                    <div class='row'>
+                      <span class='col-md-5 col-sm-12 tl_list_right_bottom_show_title'>Expired Date:</span>
+                      <span class='tl_list_right_bottom_show_box col-md-7 col-sm-12'>{{i.expiredDate || 'No Data'}}</span>
+                    </div>
+                  </div>
+                </div>
+                <div class='tl_list_right_bottom_right col-lg-6 col-md-6 col-sm-12'>
+                  <div class='tl_list_right_bottom_show list_bg'>
+                   <div class='row'>
+                      <span class='col-md-5 col-sm-12 tl_list_right_bottom_show_title'>Mobile Phone:</span>
+                      <span class='tl_list_right_bottom_show_box col-md-7 col-sm-12'>{{i.mobilePhone || 'No Data'}}</span>
+                    </div>
+                  </div>
+                  <div class='tl_list_right_bottom_show list_bg_s'>
+                    <div class='row'>
+                      <span class='col-md-5 col-sm-12 tl_list_right_bottom_show_title'>Home Phone:</span>
+                      <span class='tl_list_right_bottom_show_box col-md-7 col-sm-12'>{{i.homePhone || 'No Data'}}</span>
+                    </div>
+                  </div>
+                  <div class='tl_list_right_bottom_show list_bg'>
+                    <div class='row'>
+                      <span class='col-md-5 col-sm-12 tl_list_right_bottom_show_title'>Email:</span>
+                      <span class='tl_list_right_bottom_show_box col-md-7 col-sm-12'>{{i.email || 'No Data'}}</span>
+                    </div>
+                  </div>
+                  <div class='tl_list_right_bottom_show list_bg_s'>
+                    <div class='row'>
+                      <span class='col-md-5 col-sm-12 tl_list_right_bottom_show_title'>Qualification:</span>
+                      <span class='tl_list_right_bottom_show_box col-md-7 col-sm-12'>{{i.qualification || 'No Data'}}</span>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
