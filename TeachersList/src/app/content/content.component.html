@@ -1,0 +1,5 @@
+<div class='container'>
+  <app-lists (childEvent)='message=$event' (iEvent) = 'teacher=$event'></app-lists>
+  <app-popup *ngIf='message =="update"' (childEvent2)='message=$event' [teacher]='teacher'></app-popup>
+  <app-shell *ngIf='message =="update"'></app-shell>
+</div>

@@ -1,0 +1,33 @@
+p{
+    font-size:17px;
+    font-weight: bold;
+    min-height: 35px;
+    line-height: 35px;
+    text-align: center;
+    margin: 0px;
+    border-bottom: 1px solid white;
+}
+.weeks{
+    padding: 0 5px;
+}
+.week_icon{
+    border:1px solid white;
+    border-radius: 5px;
+    margin: 2px 0;
+    min-height:30px;
+    text-align: center;
+    font-weight: bold;
+    color:white;
+    line-height: 30px;
+}
+.row{
+    margin: 0;
+}
+
+
+
+@media screen and (max-width:992px){
+    .row{
+        padding: 0 2px;
+    }
+}
