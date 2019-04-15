@@ -1,0 +1,19 @@
+.tl_title{
+    height:80px;
+    font-size:30px;
+    font-weight: 330;
+    line-height: 80px;
+    color:grey;
+    text-align: center;
+}
+.tl_title_btn{
+    float:right;
+    margin-top:25px;
+    border:1px solid #17a2b8;
+    color:#17a2b8;
+}
+.tl_title_btn:hover{
+    cursor: pointer;
+    background: #17a2b8;
+    color:white;
+}

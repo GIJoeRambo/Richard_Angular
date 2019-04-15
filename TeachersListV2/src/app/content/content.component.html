@@ -1,0 +1,38 @@
+<div class='container'>
+  <div class='row'>
+    <div class='col-12'>
+      <app-title></app-title> 
+    </div>
+  </div>
+
+  <div class='col-12'>
+    <table class='table table-striped'>
+      <thead>
+        <tr>
+          <th scope='col' class='tl_table_title'>#</th>
+          <th scope='col' class='tl_table_title'>Name</th>
+          <th scope='col' class='tl_table_title'>Gender</th>
+          <th scope='col' class='tl_table_title'>Date Of Birth</th>
+          <th scope='col' class='tl_table_title'></th>
+        </tr>
+      </thead>
+      <tbody>
+        <!--For-->
+        <tr *ngFor = 'let i of teachers|slice: (page-1) * pageSize : (page-1) * pageSize + pageSize'>
+          <th scope="row">{{i.id}}</th> 
+          <td>{{i.firstName}}&nbsp;&nbsp;{{i.lastName}}</td>
+          <td>{{i.gender}}</td>
+          <td>{{i.dob}}</td>
+          <td>
+            <button class='btn btn-info btn-sm'>more</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class='col-12'>
+    <ngb-pagination [collectionSize] = 'length' [(page)] ='page' [pageSize]='pageSize'></ngb-pagination>
+  </div> 
+    
+</div>
