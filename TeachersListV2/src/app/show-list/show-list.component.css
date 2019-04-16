@@ -1,0 +1,21 @@
+.tl_show{
+    min-height: 200px;
+    border: 1px solid lightblue;
+    border-radius:  10px;
+}
+.tl_show_img{
+    text-align: center;
+    min-height: 100%;
+    margin-bottom: 10px;
+}
+.tl_show_img img{
+    max-width: 140px;
+    margin-top:20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.tl_show_area{
+    min-height: 100%;
+    padding-left:0;
+    margin-left: 0;
+}

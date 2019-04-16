@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { FooterComponent } from './footer/footer.component';
@@ -12,6 +12,8 @@ import { PaginationComponent } from './pagination/pagination.component';
 import { TablelistComponent } from './tablelist/tablelist.component';
 import { TeachersService } from './teachers.service';
 import { HttpClientModule } from '@angular/common/http';
+import { PopupComponent } from './popup/popup.component';
+import { ShowListComponent } from './show-list/show-list.component';
 
 @NgModule({
   declarations: [
@@ -21,13 +23,19 @@ import { HttpClientModule } from '@angular/common/http';
     TitleComponent,
     ContentComponent,
     PaginationComponent,
-    TablelistComponent
+    TablelistComponent,
+    PopupComponent,
+    ShowListComponent
   ],
   imports: [
     BrowserModule,
     NgbModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
+  ],
+  entryComponents:[
+    PopupComponent
   ],
   providers: [TeachersService],
   bootstrap: [AppComponent]

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TeachersService } from '../teachers.service';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PopupComponent } from '../popup/popup.component';
 
 @Component({
   selector: 'app-content',
@@ -11,9 +13,9 @@ export class ContentComponent implements OnInit {
   public teachers:any;
   public length;
   public page:number = 1;
-  public pageSize = 5;
+  public pageSize = 10;
 
-  constructor(private teachersService:TeachersService) {
+  constructor(private teachersService:TeachersService, private modalService:NgbModal) {
 }
 
   ngOnInit() {
@@ -24,5 +26,21 @@ export class ContentComponent implements OnInit {
       },
         (error) =>{console.log(error)})
     }
+
+  open(command,teachersObj){
+    const modalRef = this.modalService.open(PopupComponent,{size:'lg'});
+    if (command == 'Detail'){
+      modalRef.componentInstance.title ='Detail';
+    }
+    if (command =='Edit'){
+      modalRef.componentInstance.title ='Edit';
+    }
+    if (command =='Delete'){
+      modalRef.componentInstance.title ='Delete';
+    }
+    modalRef.componentInstance.name = 'World';
+    modalRef.componentInstance.teachersObj = teachersObj;
+  }
+
   
 }

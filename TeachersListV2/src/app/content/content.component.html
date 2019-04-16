@@ -13,6 +13,7 @@
           <th scope='col' class='tl_table_title'>Name</th>
           <th scope='col' class='tl_table_title'>Gender</th>
           <th scope='col' class='tl_table_title'>Date Of Birth</th>
+          <th scope="col" class="tl_table_title">XXXX</th>
           <th scope='col' class='tl_table_title'></th>
         </tr>
       </thead>
@@ -23,8 +24,11 @@
           <td>{{i.firstName}}&nbsp;&nbsp;{{i.lastName}}</td>
           <td>{{i.gender}}</td>
           <td>{{i.dob}}</td>
-          <td>
-            <button class='btn btn-info btn-sm'>more</button>
+          <td>XXX</td>
+          <td class='tl_table_btns'>
+            <button class='btn btn-sm btn-info tl_table_btn' (click)='open("Detail",i)'>Detail</button> 
+            <button class='btn btn-sm btn-warning tl_table_btn' (click)='open("Edit",i)'><span class='fas fa-pen'></span>&nbsp;&nbsp;Edit</button>
+            <button class='btn btn-sm btn-danger tl_table_btn' (click)='open("Delete",i)'>Delete</button> 
           </td>
         </tr>
       </tbody>

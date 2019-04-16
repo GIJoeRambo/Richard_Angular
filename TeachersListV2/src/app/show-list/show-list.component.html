@@ -1,0 +1,27 @@
+<div class='tl_show' *ngIf='titles=="Detail"'>
+  <div class='row'>
+    <div class='col-3' style='padding-right: 0;'>
+        <div class='tl_show_img'>
+          <div class='row'>
+              <div class='col-12'><img src="../assets/img/photo.jpeg" alt=""></div>
+              <div class='tl_show_name col-12'>{{teachersObj.firstName}} {{teachersObj.lastName}}</div> 
+          </div>
+        </div>
+    </div>
+
+    <div class='col-9' style='margin-left:0;padding-left: 0;'>
+      <div class='tl_show_area'>
+        <app-tablelist [title]='titles'></app-tablelist>
+      </div>
+    </div>
+
+  </div> 
+</div>
+
+<div *ngIf='titles=="Delete"'>
+  Are you sure?
+</div>
+
+<div *ngIf='titles=="Edit"'>
+  Eidt
+</div>

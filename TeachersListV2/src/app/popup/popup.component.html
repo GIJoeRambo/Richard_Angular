@@ -1,0 +1,14 @@
+<div class="modal-header">
+    <h4 class="modal-title">{{title}}</h4>
+    <button type="button" class='btn btn-sm btn-info modal_btn' aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+  
+    <app-show-list [teachersObj]='teachersObj' [titles]='title'></app-show-list>
+  </div>
+  <div class="modal-footer">
+    <button type='button' class='btn btn-outline-dark'>Save</button>
+    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  </div>

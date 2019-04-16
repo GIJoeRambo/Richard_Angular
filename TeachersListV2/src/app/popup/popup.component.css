@@ -1,0 +1,16 @@
+.modal-dialog{
+
+}
+.a{
+    height:400px;
+    overflow: auto;
+}
+.modal_btn{
+    background: white;
+    border: 1px solid black;
+    color:black;
+}
+.modal_btn:hover{
+    background: #272822;
+    color:white;
+}

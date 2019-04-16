@@ -1,4 +1,12 @@
-
+.container{
+    min-height: 800px;
+}
 .tl_table_title{
     text-align: left;
+}
+.tl_table_btns{
+    padding-right:0;
+}
+.tl_table_btn{
+    margin-left: 10px;
 }

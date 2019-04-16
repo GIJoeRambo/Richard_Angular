@@ -1,4 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { Title } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-tablelist',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TablelistComponent implements OnInit {
 
-  constructor() { }
+  private disabledFlag:boolean = false;
+  @Input() title;
+  constructor(private fb:FormBuilder) { }
+
 
   ngOnInit() {
+   if (this.title == 'Detail'){
+     this.disabledFlag = true;
+   } 
   }
+
+  registrationForm=this.fb.group({
+    dob:['XXXXX'],
+    gender:['xx'],
+    email:['xxxxx@xxxxxxx.com']
+  })
 
 }
