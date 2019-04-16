@@ -1,27 +1,21 @@
 <div class='tl_show' *ngIf='titles=="Detail"'>
-  <div class='row'>
-    <div class='col-3' style='padding-right: 0;'>
-        <div class='tl_show_img'>
-          <div class='row'>
-              <div class='col-12'><img src="../assets/img/photo.jpeg" alt=""></div>
-              <div class='tl_show_name col-12'>{{teachersObj.firstName}} {{teachersObj.lastName}}</div> 
-          </div>
-        </div>
-    </div>
-
-    <div class='col-9' style='margin-left:0;padding-left: 0;'>
-      <div class='tl_show_area'>
-        <app-tablelist [title]='titles'></app-tablelist>
-      </div>
-    </div>
-
-  </div> 
+  <div class='tl_show_area'>
+    <app-tablelist [title]='titles' [teachersObj] = 'teachersObj'></app-tablelist>
+  </div>
 </div>
 
 <div *ngIf='titles=="Delete"'>
-  Are you sure?
+  Are you sure to delete <span class='tl_show_delete_font'>{{teachersObj.firstName}} {{teachersObj.lastName}}</span>?
 </div>
 
-<div *ngIf='titles=="Edit"'>
-  Eidt
+<div *ngIf='titles=="Edit"' class='tl_show'>
+  <div class='tl_show_area'>
+    <app-tablelist [title]='titles' [teachersObj]='teachersObj'></app-tablelist>
+  </div>
+</div>
+
+<div *ngIf='titles=="Add"' class='tl_show'>
+  <div class='tl_show_area'>
+    <app-tablelist [title]='titles'></app-tablelist>
+  </div>
 </div>

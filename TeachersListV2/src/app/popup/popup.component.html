@@ -1,5 +1,6 @@
 <div class="modal-header">
-    <h4 class="modal-title">{{title}}</h4>
+    <h4 class="modal-title" *ngIf='title !== "Detail"'>{{title}}</h4>
+    <h4 class='modal-title' *ngIf='title == "Detail"'>{{title}}s of {{teachersObj.firstName}} {{teachersObj.lastName}}</h4>
     <button type="button" class='btn btn-sm btn-info modal_btn' aria-label="Close" (click)="activeModal.dismiss('Cross click')">
       <span aria-hidden="true">&times;</span>
     </button>
@@ -9,6 +10,9 @@
     <app-show-list [teachersObj]='teachersObj' [titles]='title'></app-show-list>
   </div>
   <div class="modal-footer">
-    <button type='button' class='btn btn-outline-dark'>Save</button>
-    <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    <button *ngIf='title !=="Delete"' type='button' class='btn btn-outline-dark'>Save</button>
+    <button *ngIf='title !=="Delete"' type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+
+    <button *ngIf='title =="Delete"' type='button' class='btn btn-outline-dark'>Delete</button>
+    <button *ngIf='title =="Delete"' type='button' class='btn btn-outline-dark' (click)="activeModal.close('Close click')">Cancel</button>
   </div>

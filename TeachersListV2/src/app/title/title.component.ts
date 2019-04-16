@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PopupComponent} from '../popup/popup.component';
 
 @Component({
   selector: 'app-title',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TitleComponent implements OnInit {
 
-  constructor() { }
+  constructor(private modalService:NgbModal) { }
 
   ngOnInit() {
   }
 
+  open(){
+    const modalRef = this.modalService.open(PopupComponent,{size:'lg'});
+    modalRef.componentInstance.title ='Add';
+    modalRef.componentInstance.teachersObj = '';
+  }
 }

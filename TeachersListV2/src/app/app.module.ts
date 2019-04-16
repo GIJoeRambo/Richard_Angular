@@ -8,7 +8,6 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { TitleComponent } from './title/title.component';
 import { ContentComponent } from './content/content.component';
-import { PaginationComponent } from './pagination/pagination.component';
 import { TablelistComponent } from './tablelist/tablelist.component';
 import { TeachersService } from './teachers.service';
 import { HttpClientModule } from '@angular/common/http';
@@ -22,7 +21,6 @@ import { ShowListComponent } from './show-list/show-list.component';
     HeaderComponent,
     TitleComponent,
     ContentComponent,
-    PaginationComponent,
     TablelistComponent,
     PopupComponent,
     ShowListComponent

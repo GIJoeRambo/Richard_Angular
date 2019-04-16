@@ -13,6 +13,7 @@ export class ShowListComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+   
     console.log(this.titles)
   }
 

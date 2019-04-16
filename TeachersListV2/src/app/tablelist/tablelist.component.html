@@ -1,27 +1,90 @@
 <div class='tl_table'>
   <form action="" [formGroup]='registrationForm'>
-      <div class='row form_group'>
-        <label>DoB: </label>
-        <input type="text" style='width: 20%;' disabled = 'disabledFlag' formControlName='dob' class='form-control'>
-
-        <label>Gender: </label>
-        <input type="text" style='width: 10%;' disabled = 'disabledFlag' formControlName='gender' class='form-control'>        
-
-        <label>Email: </label>
-        <input type="text" style='width: 33%;' disabled = 'disabledFlag' formControlName='email' class='form-control'style='width: 33%;' disabled = 'disabledFlag' formControlName='email' class='form-control'>  
+    <div class='row'>
+      <div class='col-3'>
+        <div class='tl_show_left'>
+          <div class='tl_show_img'><img src="../assets/img/photo.jpeg" alt=""></div>
+          <div class='tl_show_name' *ngIf='teachersObj !== undefined'>{{teachersObj.firstName}} {{teachersObj.lastName}}</div> 
+          
+          <div *ngIf='teachersObj == undefined'> 
+            <input type="text" class='col-10 ' style='margin-bottom: 5px'>
+          </div>
+        </div>
       </div>
 
-      <div class='row form_group'>
-        <label>Moblie: </label>
-        <input type="text" style='width: 37%;' disabled = 'disabledFlag' formControlName='email' class='form-control'>
+      <div class='col-9' style="padding:0">
+        <div class='row form_group'>
+          <div class='col-4'>
+            <div class='row'>
+              <label for='dob' style="width:25%" class='left_align'>DoB: </label>
+              <input #dis style='width: 75%' type="text" disabled formControlName='dob' class='form-control' id='dob'>
+            </div>  
+          </div>
+          <div class='col-3'>
+            <div class='row'>
+              <label style='width: 50%'>Gender: </label>
+              <input #dis id='dis' style='width: 50%;' type="text" disabled formControlName='gender' class='form-control'>        
+            </div>
+          </div>
+          <div class='col-5'>
+            <div class='row'>
+              <label style='width: 25%'>Email: </label>
+              <input #dis style='width: 75%' type="text"  disabled formControlName='email' class='form-control'>  
+            </div>
+          </div>
+        </div>
 
-        <label>Home: </label>
-        <input type="text" style='width: 36.4%;' disabled = 'disabledFlag' formControlName='email' class='form-control'>
-      </div>
+        <div class='row form_group'>
+          <div class='col-6'>
+            <div class='row'>
+              <label for='dob' style="width:25%" class='left_align'>Mobile: </label>
+              <input #dis style='width: 75%' type="text"  disabled formControlName='dob' class='form-control' id='dob'>
+            </div>  
+          </div>
+          <div class='col-6'>
+            <div class='row'>
+              <label style='width: 25%'>Home: </label>
+              <input #dis style='width: 75%;' type="text" disabled formControlName='gender' class='form-control'>        
+            </div>
+          </div>
+        </div>
 
-      <div class='row form_group'>
-          <label>IRD: </label>
-          <input type="text" style='width:33%' disabled = 'disabledFlag' formControlName='email' class='form-control'>
+        <div class='row form_group'>
+          <div class='col-3'>
+            <div class='row'>
+              <label for='dob' style="width:45%" class='left_align'>ID Type: </label>
+              <input #dis style='width: 55%' type="text"  disabled formControlName='dob' class='form-control' id='dob'>
+            </div>  
+          </div>
+          <div class='col-4'>
+            <div class='row'>
+              <label style='width: 50%'>ID Number: </label>
+              <input #dis style='width: 50%;' type="text" disabled formControlName='gender' class='form-control'>        
+            </div>
+          </div>
+          <div class='col-5'>
+            <div class='row'>
+              <label style='width: 35%'>Expired: </label>
+              <input #dis style='width: 65%' type="text"  disabled formControlName='email' class='form-control'>  
+            </div>
+          </div>
+        </div>
+
+        <div class='row form_group'>
+          <div class='col-6'>
+            <div class='row'>
+              <label for='dob' style="width:38%" class='left_align'>IRD Number: </label>
+              <input #dis style='width: 62%' type="text"  disabled formControlName='dob' class='form-control' id='dob'>
+            </div>  
+          </div>
+          <div class='col-6'>
+            <div class='row'>
+              <label style='width: 38%'>Qulifications: </label>
+              <input #dis style='width: 62%;' type="text" disabled formControlName='gender' class='form-control'>        
+            </div>
+          </div>
+        </div>  
       </div>
+    </div>
   </form> 
 </div>
