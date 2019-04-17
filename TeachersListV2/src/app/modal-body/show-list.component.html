@@ -1,19 +1,25 @@
+<!--modal bodies(detail,edit,delete)-->
+
+<!--detail modal body-->
 <div class='tl_show' *ngIf='titles=="Detail"'>
   <div class='tl_show_area'>
     <app-tablelist [title]='titles' [teachersObj] = 'teachersObj'></app-tablelist>
   </div>
 </div>
 
+<!--delete modal body-->
 <div *ngIf='titles=="Delete"'>
   Are you sure to delete <span class='tl_show_delete_font'>{{teachersObj.firstName}} {{teachersObj.lastName}}</span>?
 </div>
 
+<!--edit modal body-->
 <div *ngIf='titles=="Edit"' class='tl_show'>
   <div class='tl_show_area'>
     <app-tablelist [title]='titles' [teachersObj]='teachersObj'></app-tablelist>
   </div>
 </div>
 
+<!--add more modal body-->
 <div *ngIf='titles=="Add"' class='tl_show'>
   <div class='tl_show_area'>
     <app-tablelist [title]='titles'></app-tablelist>

@@ -18,23 +18,26 @@ export class TablelistComponent implements OnInit {
   @Input() public teachersObj;
   @Input() title;
 
+  //inputObj保存#dis标记的input标签
   @ViewChildren('dis') inputObj:any;
 
   constructor(private fb:FormBuilder) { }
 
 
   ngOnInit() {
+    //if Detail, input label disabled(can not modify)
     if (this.title == 'Detail'){
       this.disabledFlag = true;
-  
     }
+    //if Edit, can modify
     if (this.title == 'Edit'){
       this.disabledFlag = false;
     } 
 
-    console.log(this.teachersObj)
+    //if teachersObj is undefined(Add mode does not pass the teachers data)
     if (this.teachersObj == undefined){
       this.groupObj = {
+        name:[''],
         dob:[''],
         gender:[''],
         email:[''],
@@ -42,11 +45,14 @@ export class TablelistComponent implements OnInit {
         homePhone:[''],
         idType:[''],
         idNumber:[''],
-        expired:['']
+        expired:[''],
+        irdNumber:['']
       };
     }
+    //Detail, Edit mode, parent component pass the teachers data
     else{
       this.groupObj = {
+        name:[this.teachersObj.firstName + ' ' + this.teachersObj.lastName || ''],
         dob:[this.teachersObj.dob || ''],
         gender:[this.teachersObj.gender || ''],
         email:[this.teachersObj.email || ''],
@@ -54,7 +60,8 @@ export class TablelistComponent implements OnInit {
         homePhone:[this.teachersObj.homePhone || ''],
         idType:[this.teachersObj.idType || ''],
         idNumber:[this.teachersObj.idNumber || ''],
-        expired:[this.teachersObj.expiredDate || '']
+        expired:[this.teachersObj.expiredDate || ''],
+        irdNumber:[this.teachersObj.irdNumber || '']
       }
     }
 
@@ -64,13 +71,14 @@ export class TablelistComponent implements OnInit {
     
   }
 
+  /* 
+    当View渲染完成时 执行
+  */
   ngAfterViewInit(){
-    
+    //inputObj是一个集合 inputObj._result是每个input标签
     for(let i of this.inputObj._results){
       i.nativeElement.disabled= this.disabledFlag;
     }
-    
-       console.log(this.inputObj._results) 
-    
+    //console.log('adasda',this.inputObj)
   }
 }

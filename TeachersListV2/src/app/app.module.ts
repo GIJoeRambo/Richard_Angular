@@ -8,11 +8,11 @@ import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { TitleComponent } from './title/title.component';
 import { ContentComponent } from './content/content.component';
-import { TablelistComponent } from './tablelist/tablelist.component';
+import { TablelistComponent } from './modal-body-form/tablelist.component';
 import { TeachersService } from './teachers.service';
 import { HttpClientModule } from '@angular/common/http';
-import { PopupComponent } from './popup/popup.component';
-import { ShowListComponent } from './show-list/show-list.component';
+import { PopupComponent } from './modal/popup.component';
+import { ShowListComponent } from './modal-body/show-list.component';
 
 @NgModule({
   declarations: [

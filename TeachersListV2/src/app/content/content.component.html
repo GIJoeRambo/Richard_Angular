@@ -5,15 +5,21 @@
     </div>
   </div>
 
+  <div class='col-12 tl_search_area'>
+    <span class='fas fa-search'></span>&nbsp;
+    <input type="text" (input)='change($event)' placeholder=" Search by name" class='tl_search'>
+  </div>
+
   <div class='col-12'>
     <table class='table table-striped'>
       <thead>
         <tr>
           <th scope='col' class='tl_table_title'>#</th>
-          <th scope='col' class='tl_table_title'>Full Name</th>
+          <th scope='col' class='tl_table_title'>First Name</th>
+          <th scope="col" class="tl_table_title">Last Name</th>
           <th scope='col' class='tl_table_title'>Gender</th>
-          <th scope='col' class='tl_table_title'>Date Of Birth</th>
-          <th scope="col" class="tl_table_title">XXXX</th>
+          <th scope='col' class='tl_table_title'>Moblie Phone</th>
+          <th scope='col' class='tl_table_title'>Email</th>
           <th scope='col' class='tl_table_title'></th>
         </tr>
       </thead>
@@ -21,10 +27,11 @@
         <!--For-->
         <tr *ngFor = 'let i of teachers|slice: (page-1) * pageSize : (page-1) * pageSize + pageSize'>
           <th scope="row">{{i.id}}</th> 
-          <td>{{i.firstName}}&nbsp;&nbsp;{{i.lastName}}</td>
+          <td>{{i.firstName}}</td>
+          <td>{{i.lastName}}</td>
           <td>{{i.gender}}</td>
-          <td>{{i.dob}}</td>
-          <td>XXX</td>
+          <td>{{i.mobilePhone}}</td>
+          <td>{{i.email}}</td>
           <td class='tl_table_btns'>
             <button class='btn btn-sm btn-info tl_table_btn' (click)='open("Detail",i)'>Detail</button> 
             <button class='btn btn-sm btn-warning tl_table_btn' (click)='open("Edit",i)'><span class='fas fa-pen'></span>&nbsp;&nbsp;Edit</button>

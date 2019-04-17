@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { PopupComponent} from '../popup/popup.component';
+import { PopupComponent} from '../modal/popup.component';
 
 @Component({
   selector: 'app-title',
