@@ -1,59 +1,41 @@
 .tl_table{
-    min-height: 250px;
-    margin-top:10px;
-    margin-bottom:10px;
-    margin-right:10px;
-}
-.row{
-    margin:0px;
-    padding: 0px;
-}
-.form_group{
-    padding:0;
-    margin:0;
-    margin-top:10px;
-}
-.form_item{
-    padding: 0px;
-    margin: 0;
    
-    margin-left:10px;
-    padding:0 5px;
 }
-.form_group div{
-    margin:0;
-    padding:0;
-}
-.form_group label{
-    margin:0;
+.tl_forms{
     padding: 0;
-    margin-top:10px;
+    margin: 0;
+    margin-top: 5px;
+}
+.tl_forms_item{
+    padding: 0;
+    margin: 0;
+}
+.tl_forms_item label{
     font-weight: bold;
+    text-align:center;
+}
+.tl_forms_item_left_one{
+    text-align:left!important;
+}
+.tl_forms_item input{
+    border:none;
+    border:1px solid lightgrey;
+    border-radius: 5px;
     text-align: center;
 }
-.form_group input{
+.tl_forms_item select{
+    border:none;
+    border:1px solid lightgrey;
+    border-radius: 5px;
     text-align: center;
-    margin:0;
+    text-align-last: center;
+}
+.tl_form_img{
+    text-align: center;
     padding: 0;
-    border-radius:3px;
 }
-.left_align{
-    text-align: left!important;
-}
-.tl_show_left{
-    text-align: center;
-    min-height: 100%;
-    margin-bottom: 10px;
-}
-.tl_show_left img{
-    max-width: 140px;
-    margin-top:20px;
+.tl_form_img img{
+    max-width: 155px;
+    margin-top: 10px;
     border-radius: 10px;
-    margin-bottom: 10px;
-}
-
-.tl_show_name{
-    min-height: 30%;
-    font-weight: bold;
-    text-align: center;
 }

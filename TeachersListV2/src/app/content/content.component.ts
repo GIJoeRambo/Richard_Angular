@@ -4,6 +4,8 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PopupComponent } from '../modal/popup.component';
 import { UpperCasePipe } from '@angular/common';
 import { TouchSequence } from 'selenium-webdriver';
+import { Observable,of} from 'rxjs';
+
 
 @Component({
   selector: 'app-content',
@@ -20,6 +22,15 @@ export class ContentComponent implements OnInit {
   public length;
   //temp length para
   public lengthStore;
+  //qualification items from service
+  public qualifications;  
+  //languages items from service
+  public languages;
+  //orgnization items from service
+  public orgs;
+  //all datas
+  public datas;
+
   public page:number = 1;
   public pageSize = 10;
   public temTeachers = [];
@@ -29,15 +40,18 @@ export class ContentComponent implements OnInit {
 }
 
   ngOnInit() {
-    this.teachersService.getTeachers()
-        .subscribe((data) => {
-          this.teachers = data;
-          this.length = data.length;
-          this.teachersStore = data;
-          this.lengthStore = data.length;
-      },
-        (error) =>{console.log(error)})
-    }
+    //get all teachers list
+    this.teachersService.getTeachers().subscribe((data) => 
+    {
+      this.teachers = data;
+      this.length = data.length;
+      this.teachersStore = data;
+      this.lengthStore = data.length;
+    },
+    (error) =>{console.log(error)})
+
+  }
+
 
   open(command,teachersObj){
     const modalRef = this.modalService.open(PopupComponent,{size:'lg'});
@@ -70,6 +84,10 @@ export class ContentComponent implements OnInit {
       }
     this.teachers = this.temTeachers;
     this.length = this.temTeachers.length;
+  }
+
+  getQualifications(){
+    return this.qualifications;
   }
   
 }

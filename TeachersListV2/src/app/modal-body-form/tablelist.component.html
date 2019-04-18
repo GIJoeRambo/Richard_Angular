@@ -1,107 +1,119 @@
 <div class='tl_table'>
   <form action="" [formGroup]='registrationForm'>
-    <div class='row'>
-      <div class='col-3'>
-        <div class='tl_show_left'>
-          <div class='tl_show_img'><img src="../assets/img/photo.jpeg" alt=""></div>
-          <div class='tl_show_name' *ngIf='title=="Detail"'>{{teachersObj.firstName}} {{teachersObj.lastName}}</div> 
-          <label *ngIf='title=="Edit" || title=="Add"' for="name" class='tl_show_name'>Name:</label>
-          <input *ngIf='title=="Edit" || title=="Add"' #dis style='width: 100%;text-align:center' type="text"  id='name' formControlName='name' class='form-control'>
+    <div class='row' style='margin: 0'>
+
+      <!--上半部分-->
+      <div class='col-12'>
+        <div class='row tl_forms'>
+          <!--img area-->
+          <div class='col-3 tl_form_img'>
+            <img src="../assets/img/photo.jpeg" alt="">
+          </div>
+          <!--input area-->
+          <div class='col-9' style='margin-right:0;padding-right:0'>
+
+            <!--line1 forms-->
+            <div class='row tl_forms'>
+              <!--firstName input-->
+              <div class='tl_forms_item col-4'>
+                <label for="firstName" style="width:50%" class='tl_forms_item_left_one'>FirstName: </label>
+                <input #dis type="text" name="firstName" id="firstName" style='width:50%' disabled formControlName='firstName'>
+              </div>
+              <!--lastName input-->
+              <div class='tl_forms_item col-4'>
+                <label for="lastName" style="width:50%">LastName: </label>
+                <input #dis type="text" name="lastName" id="lastName" style='width:50%' disabled formControlName='lastName'>
+              </div>
+              <!--gender input-->
+              <div class='tl_forms_item col-4'>
+                <label for="gender" style="width:45%">Gender: </label>
+                <input *ngIf='title=="Detail"' type="text" name="gender" id="gender" style='width:55%' disabled formControlName='gender'>
+                <select *ngIf='title!=="Detail"'name="gender" id="gender" style='width: 55%'>
+                  <option value="male">Male</option>
+                  <option value="female">Female</option>
+                </select>
+              </div>
+            </div>
+
+            <!--line2 forms-->
+            <div class='row tl_forms'>
+              <!--DoB input-->
+              <div class='tl_forms_item col-5'>
+                <label for="dob" style="width:20%" class='tl_forms_item_left_one'>DoB: </label>
+                <input *ngIf='title=="Detail"' type="text" name="dob" id="dob" style='width:80%' disabled formControlName='dob'>
+                <input *ngIf='title!=="Detail"' type="date" name='dob' id='dob' style='width: 80%'>
+              </div>
+              <!--qualification input-->
+              <div class='tl_forms_item col-7'>
+                <label for="qualifications" style="width:35%">Qualifications: </label>
+                <input *ngIf='title=="Detail"' type="text" name="qualifications" id="qualifications" style='width:65%' disabled formControlName='qualifications'>
+                <select *ngIf='title!=="Detail"' name='qualifications' id='qualifications' style="width: 65%">
+                  <option value="" *ngFor='let i of qualifications'>{{i.QualiName}}</option>
+                </select>
+              </div>
+            </div>
+
+            <!--line3 forms-->
+            <div class='row tl_forms'>
+              <!--Mobile phone input-->
+              <div class='tl_forms_item col-6'>
+                <label for="mobile" style="width:42%" class='tl_forms_item_left_one'>Mobile Phone: </label>
+                <input #dis type="text" name="mobilePhone" id="mobile" style='width:58%' disabled formControlName='mobilePhone'>
+              </div>
+              <!--Home phone input-->
+              <div class='tl_forms_item col-6'>
+                <label for="home" style="width:42%">Home Phone: </label>
+                <input #dis type="text" name="homePhone" id="home" style='width:58%' disabled formControlName='homePhone'>
+              </div>
+            </div>
+
+            <!--line4 forms-->
+            <div class='row tl_forms'>
+              <!--email input-->
+              <div class='tl_forms_item col-6'>
+                <label for="email" style="width:20%" class='tl_forms_item_left_one'>Email: </label>
+                <input #dis type="text" name="email" id="email" style='width:80%' disabled formControlName='email'>
+              </div>
+              <!--ird Number input-->
+              <div class='tl_forms_item col-6'>
+                <label for="ird" style="width:42%">IRD Number: </label>
+                <input #dis type="text" name="irdNumber" id="ird" style='width:58%' disabled formControlName='irdNumber'>
+              </div>
+            </div>
+
+            <!--line5 forms-->
+            <div class='row tl_forms'>
+              <!--languages input-->
+              <div class='tl_forms_item col-12'>
+                <label for="lan" style="width:18%" class='tl_forms_item_left_one'>Languages: </label>
+                <input #dis type="text" name="languages" id="lan" style='width:82%' disabled formControlName='languages'>
+              </div>
+            </div> 
+          </div>
         </div>
       </div>
 
-      <div class='col-9' style="padding:0">
-        <!--line1 forms-->
-        <div class='row form_group'>
-          <!--DoB form-->
-          <div [class.col-4]='title=="Detail"' [class.col-3]='title=="Edit" || title=="Add"'>
-            <div class='row'>
-              <label for='dob' style="width:27%" class='left_align'>DoB: </label>
-              <input #dis style='width: 73%' type="text" disabled formControlName='dob' class='form-control' id='dob'>
-            </div>  
+      <!--下半部分-->
+      <div class='col-12'>
+         <!--line6 forms-->
+         <div class='row tl_forms'>
+          <!--id type input-->
+          <div class='tl_forms_item col-3'>
+            <label for="type" style="width:35%" class='tl_forms_item_left_one'>ID Type: </label>
+            <input #dis type="text" name="idType" id="type" style='width:65%' disabled formControlName='idType'>
           </div>
-          <!--Gender form-->
-          <div [class.col-3]='title=="Detail"' [class.col-4]='title=="Edit"||title=="Add"'>
-            <div class='row'>
-              <label style='width: 47%'>Gender: </label>
-              <!--Gender in Detail mode-->
-              <input *ngIf='title=="Detail"' #dis id='dis' style='width: 53%;' type="text" disabled formControlName='gender' class='form-control'>        
-              <!--Gender in Edit and Add mode-->
-              <select *ngIf='title=="Edit" || title=="Add"' name="gender" id="gender" style="width:53%" class='form-control'>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </div>
+          <!--id Number input-->
+          <div class='tl_forms_item col-4'>
+            <label for="idNumber" style="width:40%">ID Number: </label>
+            <input #dis type="text" name="idNumber" id="idNumber" style='width:60%' disabled formControlName='idNumber'>
           </div>
-          <!--Email form-->
-          <div class='col-5'>
-            <div class='row'>
-              <label style='width: 25%'>Email: </label>
-              <input #dis style='width: 75%' type="text"  disabled formControlName='email' class='form-control'>  
-            </div>
+          <!--id Number input-->
+          <div class='tl_forms_item col-5'>
+            <label for="expired" style="width:25%">Expired: </label>
+            <input *ngIf='title=="Detail"' type="text" name="expired" id="expired" style='width:75%' disabled formControlName='expired'>
+            <input *ngIf='title!=="Detail"' type="date" name="expired" id="expired" style='width:75%' formControlName='expired'>
           </div>
-        </div>
-
-        <!--line2 forms-->
-        <div class='row form_group'>
-          <!--Mobile Phone form-->
-          <div class='col-6'>
-            <div class='row'>
-              <label for='dob' style="width:25%" class='left_align'>Mobile: </label>
-              <input #dis style='width: 75%' type="text"  disabled formControlName='mobilePhone' class='form-control'>
-            </div>  
-          </div>
-          <!--Home Phone form-->
-          <div class='col-6'>
-            <div class='row'>
-              <label style='width: 25%'>Home: </label>
-              <input #dis style='width: 75%;' type="text" disabled formControlName='homePhone' class='form-control'>        
-            </div>
-          </div>
-        </div>
-
-        <!--line3 forms-->
-        <div class='row form_group'>
-          <!--ID Type form-->
-          <div class='col-3'>
-            <div class='row'>
-              <label for='dob' style="width:45%" class='left_align'>ID Type: </label>
-              <input #dis style='width: 55%' type="text"  disabled formControlName='idType' class='form-control'>
-            </div>  
-          </div>
-          <!--ID Number form-->
-          <div class='col-4'>
-            <div class='row'>
-              <label style='width: 50%'>ID Number: </label>
-              <input #dis style='width: 50%;' type="text" disabled formControlName='idNumber' class='form-control'>        
-            </div>
-          </div>
-          <!--Expired form-->
-          <div class='col-5'>
-            <div class='row'>
-              <label style='width: 35%'>Expired: </label>
-              <input #dis style='width: 65%' type="text"  disabled formControlName='expired' class='form-control'>  
-            </div>
-          </div>
-        </div>
-
-        <!--lin4 forms-->
-        <div class='row form_group'>
-          <!--IRD Number form-->
-          <div class='col-6'>
-            <div class='row'>
-              <label for='dob' style="width:38%" class='left_align'>IRD Number: </label>
-              <input #dis style='width: 62%' type="text"  disabled formControlName='irdNumber' class='form-control'>
-            </div>  
-          </div>
-          <!--Qulification form-->
-          <div class='col-6'>
-            <div class='row'>
-              <label style='width: 38%'>Qulifications: </label>
-              <input #dis style='width: 62%;' type="text" disabled formControlName='gender' class='form-control'>        
-            </div>
-          </div>
-        </div>  
+        </div> 
       </div>
     </div>
   </form> 

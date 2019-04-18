@@ -1,3 +1,5 @@
+import { TeachersService } from './../teachers.service';
+import { ContentComponent } from './../content/content.component';
 import { Component, OnInit, Input, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
@@ -14,6 +16,12 @@ export class TablelistComponent implements OnInit {
   public registrationForm;
   private disabledFlag:boolean = false;
   private groupObj:any;
+  private content:ContentComponent;
+  private qualifications;
+  private datas;
+  private languages;
+  private orgs;
+
  
   @Input() public teachersObj;
   @Input() title;
@@ -21,7 +29,9 @@ export class TablelistComponent implements OnInit {
   //inputObj保存#dis标记的input标签
   @ViewChildren('dis') inputObj:any;
 
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,private teachersService:TeachersService) { 
+    
+  }
 
 
   ngOnInit() {
@@ -37,8 +47,10 @@ export class TablelistComponent implements OnInit {
     //if teachersObj is undefined(Add mode does not pass the teachers data)
     if (this.teachersObj == undefined){
       this.groupObj = {
-        name:[''],
+        firstName:[''],
+        lastName:[''],
         dob:[''],
+        qualifications:[''],
         gender:[''],
         email:[''],
         mobilePhone:[''],
@@ -46,14 +58,17 @@ export class TablelistComponent implements OnInit {
         idType:[''],
         idNumber:[''],
         expired:[''],
-        irdNumber:['']
+        irdNumber:[''],
+        languages:['']
       };
     }
     //Detail, Edit mode, parent component pass the teachers data
     else{
       this.groupObj = {
-        name:[this.teachersObj.firstName + ' ' + this.teachersObj.lastName || ''],
+        firstName:[this.teachersObj.firstName || ''],
+        lastName:[this.teachersObj.lastName || ''],
         dob:[this.teachersObj.dob || ''],
+        qualifications:[this.teachersObj.qualifications || ''],
         gender:[this.teachersObj.gender || ''],
         email:[this.teachersObj.email || ''],
         mobilePhone:[this.teachersObj.mobilePhone ||''],
@@ -61,13 +76,28 @@ export class TablelistComponent implements OnInit {
         idType:[this.teachersObj.idType || ''],
         idNumber:[this.teachersObj.idNumber || ''],
         expired:[this.teachersObj.expiredDate || ''],
-        irdNumber:[this.teachersObj.irdNumber || '']
+        irdNumber:[this.teachersObj.irdNumber || ''],
+        languages:[this.teachersObj.languages || '']
       }
     }
 
     this.registrationForm=this.fb.group(this.groupObj)
     //初始化数据的代码一定要放在ngOnInit里面 否则数据显示不出来
     //???????????????????????????????????跟database数据检查?????????????????????????????????????????????????????
+
+    //get datas
+    this.teachersService.getApi().subscribe((data) =>
+    {
+      this.datas = data;
+      console.log(this.datas)
+      this.languages = this.datas.Data.Languages;
+      //console.log('Languages',this.languages)
+      this.qualifications = this.datas.Data.qualifications;
+      console.log('Qualification',this.qualifications);
+      this.orgs = this.datas.Data.Orgs;
+      //console.log('Orgs',this.orgs)
+    },
+    (error) =>{console.log(error)})
     
   }
 
