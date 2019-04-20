@@ -95,8 +95,8 @@
 
       <!--下半部分-->
       <div class='col-12'>
-         <!--line6 forms-->
-         <div class='row tl_forms'>
+        <!--line6 forms-->
+        <div class='row tl_forms'>
           <!--id type input-->
           <div class='tl_forms_item col-3'>
             <label for="type" style="width:35%" class='tl_forms_item_left_one'>ID Type: </label>
@@ -113,8 +113,42 @@
             <input *ngIf='title=="Detail"' type="text" name="expired" id="expired" style='width:75%' disabled formControlName='expired'>
             <input *ngIf='title!=="Detail"' type="date" name="expired" id="expired" style='width:75%' formControlName='expired'>
           </div>
-        </div> 
-      </div>
+        </div>
+        <!--line7 forms-->
+        <div class='row tl_forms'>
+          <!--mon input-->
+          <div class='tl_forms_item col-4'>
+            <label for="mon" style="width:20%" class='tl_forms_item_left_one'>Mon:</label>
+            <input #dis type="text" name='mon' id='mon' style="width:80%" disabled formControlName='mon'>
+          </div>
+          <!--tue input-->
+          <div class='tl_forms_item col-4'>
+            <label for="tue" style="width:20%">Tue:</label>
+            <input #dis type="text" name='tue' id='tue' style="width:80%" disabled formControlName='tue'>
+          </div>
+          <!--wed input-->
+          <div class='tl_forms_item col-4'>
+            <label for="wed" style="width:20%">Wed:</label>
+            <input #dis type="text" name='wed' id='wed' style="width:80%" disabled formControlName='wed'>
+          </div>
+          <!--thu input-->
+          <div class='tl_forms_item col-4'>
+            <label for="thu" style="width:20%" class='tl_forms_item_left_one'>Thu:</label>
+            <input #dis type="text" name='thu' id='thu' style="width:80%" disabled formControlName='thu'>
+          </div>
+          <!--fri input-->
+          <div class='tl_forms_item col-4'>
+            <label for="fri" style="width:20%">Fri:</label>
+            <input #dis type="text" name='fri' id='fri' style="width:80%" disabled formControlName='fri'>
+          </div>
+          <!--sat input-->
+          <div class='tl_forms_item col-4'>
+            <label for="sat" style="width:20%">Sat:</label>
+            <input #dis type="text" name='sat' id='sat' style="width:80%" disabled formControlName='sat'>
+          </div>
+        </div>
+      </div> 
+
     </div>
   </form> 
 </div>

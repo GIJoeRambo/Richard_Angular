@@ -21,6 +21,7 @@ export class TablelistComponent implements OnInit {
   private datas;
   private languages;
   private orgs;
+  private temLan;
 
  
   @Input() public teachersObj;
@@ -30,7 +31,7 @@ export class TablelistComponent implements OnInit {
   @ViewChildren('dis') inputObj:any;
 
   constructor(private fb:FormBuilder,private teachersService:TeachersService) { 
-    
+
   }
 
 
@@ -59,7 +60,13 @@ export class TablelistComponent implements OnInit {
         idNumber:[''],
         expired:[''],
         irdNumber:[''],
-        languages:['']
+        languages:[''],
+        mon:[''],
+        tue:[''],
+        wed:[''],
+        thu:[''],
+        fri:[''],
+        sat:['']
       };
     }
     //Detail, Edit mode, parent component pass the teachers data
@@ -77,7 +84,13 @@ export class TablelistComponent implements OnInit {
         idNumber:[this.teachersObj.idNumber || ''],
         expired:[this.teachersObj.expiredDate || ''],
         irdNumber:[this.teachersObj.irdNumber || ''],
-        languages:[this.teachersObj.languages || '']
+        languages:[this.languagesFormat() || ''],
+        mon:[''],
+        tue:[''],
+        wed:[''],
+        thu:[''],
+        fri:[''],
+        sat:['']
       }
     }
 
@@ -93,12 +106,10 @@ export class TablelistComponent implements OnInit {
       this.languages = this.datas.Data.Languages;
       //console.log('Languages',this.languages)
       this.qualifications = this.datas.Data.qualifications;
-      console.log('Qualification',this.qualifications);
       this.orgs = this.datas.Data.Orgs;
       //console.log('Orgs',this.orgs)
     },
-    (error) =>{console.log(error)})
-    
+    (error) =>{console.log(error)});
   }
 
   /* 
@@ -110,5 +121,18 @@ export class TablelistComponent implements OnInit {
       i.nativeElement.disabled= this.disabledFlag;
     }
     //console.log('adasda',this.inputObj)
+  }
+
+  languagesFormat(){
+    if(this.teachersObj.languages == undefined){
+      return null;
+    }
+    else{
+      this.temLan = [];
+      for(let i of this.teachersObj.languages){
+        this.temLan.push('  '+i);
+      }
+      return this.temLan;
+    }
   }
 }
