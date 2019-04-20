@@ -1,1 +1,1 @@
-change my local git name to GIJoeRambo
+change my local git name to GIJoeRambo and also change the email
