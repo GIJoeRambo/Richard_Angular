@@ -11,6 +11,7 @@ import { TeachersService } from '../teachers.service';
 export class PopupComponent implements OnInit {
 
   public tilteName:string;
+  public instruction:string;
   @Input()name;
   @Input()title;
   @Input()parentData;
@@ -20,6 +21,10 @@ export class PopupComponent implements OnInit {
 
   ngOnInit() {
     
+  }
+
+  submit(){
+    this.instruction = 'save';
   }
 
   

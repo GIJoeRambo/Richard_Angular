@@ -6,7 +6,10 @@
       <div class='col-12'>
         <div class='row tl_forms'>
           <!--img area-->
-          <div class='col-3 tl_form_img'>
+          <div *ngIf='title=="Detail"' class='col-3 tl_form_img'>
+            <img src="../assets/img/photo.jpeg" alt="">
+          </div>
+          <div *ngIf='title!=="Detail"' class='col-3 tl_form_img_add tl_form_img'>
             <img src="../assets/img/photo.jpeg" alt="">
           </div>
           <!--input area-->
@@ -48,7 +51,8 @@
                 <label for="qualifications" style="width:35%">Qualifications: </label>
                 <input *ngIf='title=="Detail"' type="text" name="qualifications" id="qualifications" style='width:65%' disabled formControlName='qualifications'>
                 <select *ngIf='title!=="Detail"' name='qualifications' id='qualifications' style="width: 65%">
-                  <option value="" *ngFor='let i of qualifications'>{{i.QualiName}}</option>
+                  <option value="null" disabled>Please Select</option>
+                  <option value={{i.QualiId}} *ngFor='let i of qualifications'>{{i.QualiName}}</option>
                 </select>
               </div>
             </div>
@@ -84,9 +88,18 @@
             <!--line5 forms-->
             <div class='row tl_forms'>
               <!--languages input-->
-              <div class='tl_forms_item col-12'>
+              <div class='tl_forms_item col-12' *ngIf='title=="Detail"'>
                 <label for="lan" style="width:18%" class='tl_forms_item_left_one'>Languages: </label>
                 <input #dis type="text" name="languages" id="lan" style='width:82%' disabled formControlName='languages'>
+              </div>
+              <div class='tl_forms_item col-12' *ngIf='title!=="Detail"' style="border: 1px solid lightgrey;margin-bottom:5px;border-radius:5px">
+                <div class='row'>
+                  <div class='col-12' style='text-align: center;font-weight: bold;margin-bottom:10px'>Languages:</div>
+                  <div *ngFor='let i of languages' class="col-3" style="width:20%">
+                    <label style="width:75%" class='tl_forms_item_left_one'>{{i.LangName}}: </label>
+                    <input type="checkbox" name="languages" style='width:25%'>
+                  </div>
+                </div>
               </div>
             </div> 
           </div>
@@ -98,9 +111,16 @@
         <!--line6 forms-->
         <div class='row tl_forms'>
           <!--id type input-->
-          <div class='tl_forms_item col-3'>
-            <label for="type" style="width:35%" class='tl_forms_item_left_one'>ID Type: </label>
-            <input #dis type="text" name="idType" id="type" style='width:65%' disabled formControlName='idType'>
+          <div *ngIf='title=="Detail"' class='tl_forms_item col-4'>
+            <label for="type" style="width:30%" class='tl_forms_item_left_one'>ID Type: </label>
+            <input #dis type="text" name="idType" id="type" style='width:70%' disabled formControlName='idType'>
+          </div>
+          <div *ngIf='title!=="Detail"' class='tl_forms_item col-4'>
+            <label for="type" style="width:30%" class='tl_forms_item_left_one'>ID Type: </label>
+            <select name="idType" id="idType" style="width:70%" (change)= 'expiredDisabled($event)'>
+              <option value="passort">Passport</option>
+              <option value="driverLicense">Driver License</option>
+            </select>
           </div>
           <!--id Number input-->
           <div class='tl_forms_item col-4'>
@@ -108,10 +128,10 @@
             <input #dis type="text" name="idNumber" id="idNumber" style='width:60%' disabled formControlName='idNumber'>
           </div>
           <!--id Number input-->
-          <div class='tl_forms_item col-5'>
-            <label for="expired" style="width:25%">Expired: </label>
-            <input *ngIf='title=="Detail"' type="text" name="expired" id="expired" style='width:75%' disabled formControlName='expired'>
-            <input *ngIf='title!=="Detail"' type="date" name="expired" id="expired" style='width:75%' formControlName='expired'>
+          <div class='tl_forms_item col-4'>
+            <label for="expired" style="width:28%">Expired: </label>
+            <input *ngIf='title=="Detail"' type="text" name="expired" id="expired" style='width:72%' disabled formControlName='expired'>
+            <input #date *ngIf='title!=="Detail"' type="date" name="expired" id="expired" style='width:72%' formControlName='expired'>
           </div>
         </div>
         <!--line7 forms-->
@@ -119,32 +139,56 @@
           <!--mon input-->
           <div class='tl_forms_item col-4'>
             <label for="mon" style="width:20%" class='tl_forms_item_left_one'>Mon:</label>
-            <input #dis type="text" name='mon' id='mon' style="width:80%" disabled formControlName='mon'>
+            <input *ngIf='title=="Detail"' #dis type="text" name='mon' id='mon' style="width:80%" disabled formControlName='mon'>
+            <select *ngIf='title!=="Detail"' name='mon' id='mon' style="width: 80%" (change)='a($event)'>
+              <option value="null" disabled>Please Select</option>
+              <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+            </select>
           </div>
           <!--tue input-->
           <div class='tl_forms_item col-4'>
             <label for="tue" style="width:20%">Tue:</label>
-            <input #dis type="text" name='tue' id='tue' style="width:80%" disabled formControlName='tue'>
+            <input *ngIf='title=="Detail"' #dis type="text" name='tue' id='tue' style="width:80%" disabled formControlName='tue'>
+            <select *ngIf='title!=="Detail"' name='tue' id='tue' style="width: 80%" (change)='a($event)'>
+              <option value="null" disabled>Please Select</option>
+              <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+            </select>
           </div>
           <!--wed input-->
           <div class='tl_forms_item col-4'>
             <label for="wed" style="width:20%">Wed:</label>
-            <input #dis type="text" name='wed' id='wed' style="width:80%" disabled formControlName='wed'>
+            <input *ngIf='title=="Detail"' #dis type="text" name='wed' id='wed' style="width:80%" disabled formControlName='wed'>
+            <select *ngIf='title!=="Detail"' name='wed' id='wed' style="width: 80%" (change)='a($event)'>
+              <option value="null" disabled>Please Select</option>
+              <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+            </select>
           </div>
           <!--thu input-->
           <div class='tl_forms_item col-4'>
             <label for="thu" style="width:20%" class='tl_forms_item_left_one'>Thu:</label>
-            <input #dis type="text" name='thu' id='thu' style="width:80%" disabled formControlName='thu'>
+            <input *ngIf='title=="Detail"' #dis type="text" name='thu' id='thu' style="width:80%" disabled formControlName='thu'>
+            <select *ngIf='title!=="Detail"' name='thu' id='thu' style="width: 80%" (change)='a($event)'>
+              <option value="null" disabled>Please Select</option>
+              <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+            </select>
           </div>
           <!--fri input-->
           <div class='tl_forms_item col-4'>
             <label for="fri" style="width:20%">Fri:</label>
-            <input #dis type="text" name='fri' id='fri' style="width:80%" disabled formControlName='fri'>
+            <input *ngIf='title=="Detail"' #dis type="text" name='fri' id='fri' style="width:80%" disabled formControlName='fri'>
+            <select *ngIf='title!=="Detail"' name='fri' id='fri' style="width: 80%" (change)='a($event)'>
+              <option value="null" disabled>Please Select</option>
+              <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+            </select>
           </div>
           <!--sat input-->
           <div class='tl_forms_item col-4'>
             <label for="sat" style="width:20%">Sat:</label>
-            <input #dis type="text" name='sat' id='sat' style="width:80%" disabled formControlName='sat'>
+            <input *ngIf='title=="Detail"' #dis type="text" name='sat' id='sat' style="width:80%" disabled formControlName='sat'>
+            <select *ngIf='title!=="Detail"' name='sat' id='sat' style="width: 80%" (change)='a($event)'>
+              <option value="null" disabled>Please Select</option>
+              <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+            </select>
           </div>
         </div>
       </div> 

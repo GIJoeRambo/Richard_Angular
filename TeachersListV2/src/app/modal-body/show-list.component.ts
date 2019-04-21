@@ -10,6 +10,7 @@ export class ShowListComponent implements OnInit {
 
   @Input() teachersObj;
   @Input() titles;
+  @Input() instruction;
   constructor() { }
 
   ngOnInit() {

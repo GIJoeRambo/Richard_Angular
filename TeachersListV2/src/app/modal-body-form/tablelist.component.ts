@@ -3,6 +3,7 @@ import { ContentComponent } from './../content/content.component';
 import { Component, OnInit, Input, ViewChild, ViewChildren, QueryList } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { Title } from '@angular/platform-browser';
+import { checkNoChangesView } from '@angular/core/src/view/view';
 
 
 
@@ -26,9 +27,11 @@ export class TablelistComponent implements OnInit {
  
   @Input() public teachersObj;
   @Input() title;
+  @Input() instruction;
 
   //inputObj保存#dis标记的input标签
   @ViewChildren('dis') inputObj:any;
+  @ViewChild('date') dateObj:any;
 
   constructor(private fb:FormBuilder,private teachersService:TeachersService) { 
 
@@ -85,12 +88,12 @@ export class TablelistComponent implements OnInit {
         expired:[this.teachersObj.expiredDate || ''],
         irdNumber:[this.teachersObj.irdNumber || ''],
         languages:[this.languagesFormat() || ''],
-        mon:[''],
-        tue:[''],
-        wed:[''],
-        thu:[''],
-        fri:[''],
-        sat:['']
+        mon:['' || 'Not Avaliable'],
+        tue:['' || 'Not Avaliable'],
+        wed:['' || 'Not Avaliable'],
+        thu:['' || 'Not Avaliable'],
+        fri:['' || 'Not Avaliable'],
+        sat:['' || 'Not Avaliable']
       }
     }
 
@@ -102,10 +105,11 @@ export class TablelistComponent implements OnInit {
     this.teachersService.getApi().subscribe((data) =>
     {
       this.datas = data;
-      console.log(this.datas)
+      //console.log(this.datas)
       this.languages = this.datas.Data.Languages;
       //console.log('Languages',this.languages)
       this.qualifications = this.datas.Data.qualifications;
+      console.log(this.qualifications)
       this.orgs = this.datas.Data.Orgs;
       //console.log('Orgs',this.orgs)
     },
@@ -123,6 +127,19 @@ export class TablelistComponent implements OnInit {
     //console.log('adasda',this.inputObj)
   }
 
+  //当button指令发生变化时 
+  ngOnChanges(){
+    //提交表单指令
+    if(this.instruction == 'save'){
+      console.log('woco')
+      this.submit();
+    }
+    if(this.instruction =='delete'){
+      this.delete();
+    }
+  }
+
+
   languagesFormat(){
     if(this.teachersObj.languages == undefined){
       return null;
@@ -135,4 +152,29 @@ export class TablelistComponent implements OnInit {
       return this.temLan;
     }
   }
+
+  expiredDisabled(e){
+    if(e.target.value =='driverLicense'){
+      this.dateObj.nativeElement.disabled = true;
+      this.dateObj.nativeElement.type = 'text';
+    }
+    else{
+      this.dateObj.nativeElement.disabled = false;
+      this.dateObj.nativeElement.type = 'date';
+    }
+
+  }
+
+  a(e){
+    console.log(e.target.value)
+  }
+
+  submit(){
+
+  }
+
+  delete(){
+
+  }
+
 }

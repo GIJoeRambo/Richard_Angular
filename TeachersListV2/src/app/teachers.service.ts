@@ -10,12 +10,13 @@ import { Observable } from 'rxjs/';
 export class TeachersService {
 
   private url:string = "/assets/data/teachers.json";
+  private serverUrl:string = 'http://35.197.183.118:5000/api/register/teacher'
   private teachersToPass;
   private apisToPass;
 
   constructor(private http:HttpClient) { 
     this.teachersToPass = this.http.get<ITeacher[]>(this.url);
-    this.apisToPass = this.http.get<ITeacher[]>('http://192.168.178.76:5000/api/register/teacher');
+    this.apisToPass = this.http.get<ITeacher[]>(this.serverUrl);
   }
 
   getTeachers():Observable<ITeacher[]>{

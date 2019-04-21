@@ -12,12 +12,12 @@
 <!--modal body-->
 <div class="modal-body">
 
-  <app-show-list [teachersObj]='teachersObj' [titles]='title'></app-show-list>
+  <app-show-list [teachersObj]='teachersObj' [titles]='title' [instruction]='instruction'></app-show-list>
 </div>
 
 <!--modal footer-->
 <div class="modal-footer">
-  <button *ngIf='title !=="Delete" && title !=="Detail"' type='button' class='btn btn-outline-dark'>Save</button>
+  <button *ngIf='title !=="Delete" && title !=="Detail"' type='button' class='btn btn-outline-dark' (click)='submit()'>Save</button>
   <button *ngIf='title !=="Delete"' type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
 
   <button *ngIf='title =="Delete"' type='button' class='btn btn-outline-dark'>Delete</button>
