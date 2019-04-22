@@ -1,0 +1,9 @@
+.tl_modal_btn{
+    background: white;
+    border: 1px solid black;
+    color:black;
+}
+.tl_modal_delete_font{
+    font-style: italic;
+    font-weight: bold;
+}

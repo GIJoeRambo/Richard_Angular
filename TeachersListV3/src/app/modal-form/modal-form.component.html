@@ -1,0 +1,198 @@
+<div class='tl_table'>
+    <form action="" [formGroup]='registrationForm'>
+      <div class='row' style='margin: 0'>
+  
+        <!--上半部分-->
+        <div class='col-12'>
+          <div class='row tl_forms'>
+            <!--img area-->
+            <div *ngIf='command=="Detail"' class='col-3 tl_form_img'>
+              <img src="../assets/img/photo.jpeg" alt="">
+            </div>
+            <div *ngIf='command!=="Detail"' class='col-3 tl_form_img_add tl_form_img'>
+              <img src="../assets/img/photo.jpeg" alt="">
+            </div>
+            <!--input area-->
+            <div class='col-9' style='margin-right:0;padding-right:0'>
+  
+              <!--line1 forms-->
+              <div class='row tl_forms'>
+                <!--firstName input-->
+                <div class='tl_forms_item col-4'>
+                  <label for="firstName" style="width:50%" class='tl_forms_item_left_one'>FirstName: </label>
+                  <input #dis type="text" name="firstName" id="firstName" style='width:50%' disabled formControlName='firstName'>
+                </div>
+                <!--lastName input-->
+                <div class='tl_forms_item col-4'>
+                  <label for="lastName" style="width:50%">LastName: </label>
+                  <input #dis type="text" name="lastName" id="lastName" style='width:50%' disabled formControlName='lastName'>
+                </div>
+                <!--gender input-->
+                <div class='tl_forms_item col-4'>
+                  <label for="gender" style="width:45%">Gender: </label>
+                  <input *ngIf='command=="Detail"' type="text" name="gender" id="gender" style='width:55%' disabled formControlName='gender'>
+                  <select *ngIf='command!=="Detail"'name="gender" id="gender" style='width: 55%' formControlName='gender'>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                  </select>
+                </div>
+              </div>
+  
+              <!--line2 forms-->
+              <div class='row tl_forms'>
+                <!--DoB input-->
+                <div class='tl_forms_item col-5'>
+                  <label for="dob" style="width:20%" class='tl_forms_item_left_one'>DoB: </label>
+                  <input *ngIf='command=="Detail"' type="text" name="dob" id="dob" style='width:80%' disabled formControlName='dob'>
+                  <input *ngIf='command!=="Detail"' type="date" name='dob' id='dob' style='width: 80%' formControlName='dob'>
+                </div>
+                <!--qualification input-->
+                <div class='tl_forms_item col-7'>
+                  <label for="qualifications" style="width:35%">Qualifications: </label>
+                  <input *ngIf='command=="Detail"' type="text" name="qualifications" id="qualifications" style='width:65%' disabled formControlName='qualifications'>
+                  <select *ngIf='command!=="Detail"' name='qualifications' id='qualifications' style="width: 65%" formControlName='qualifications' >
+                    <option value="null" disabled>Please Select</option>
+                    <option value={{i.QualiId}} *ngFor='let i of qualifications'>{{i.QualiName}}</option>
+                  </select>
+                </div>
+              </div>
+  
+              <!--line3 forms-->
+              <div class='row tl_forms'>
+                <!--Mobile phone input-->
+                <div class='tl_forms_item col-6'>
+                  <label for="mobile" style="width:42%" class='tl_forms_item_left_one'>Mobile Phone: </label>
+                  <input #dis type="text" name="mobilePhone" id="mobile" style='width:58%' disabled formControlName='mobilePhone'>
+                </div>
+                <!--Home phone input-->
+                <div class='tl_forms_item col-6'>
+                  <label for="home" style="width:42%">Home Phone: </label>
+                  <input #dis type="text" name="homePhone" id="home" style='width:58%' disabled formControlName='homePhone'>
+                </div>
+              </div>
+  
+              <!--line4 forms-->
+              <div class='row tl_forms'>
+                <!--email input-->
+                <div class='tl_forms_item col-6'>
+                  <label for="email" style="width:20%" class='tl_forms_item_left_one'>Email: </label>
+                  <input #dis type="text" name="email" id="email" style='width:80%' disabled formControlName='email'>
+                </div>
+                <!--ird Number input-->
+                <div class='tl_forms_item col-6'>
+                  <label for="ird" style="width:42%">IRD Number: </label>
+                  <input #dis type="text" name="irdNumber" id="ird" style='width:58%' disabled formControlName='irdNumber'>
+                </div>
+              </div>
+  
+              <!--line5 forms-->
+              <div class='row tl_forms'>
+                <!--languages input-->
+                <div class='tl_forms_item col-12' *ngIf='command=="Detail"'>
+                  <label for="lan" style="width:18%" class='tl_forms_item_left_one'>Languages: </label>
+                  <input #dis type="text" name="languages" id="lan" style='width:82%' disabled formControlName='languages'>
+                </div>
+                <div class='tl_forms_item col-12' *ngIf='command!=="Detail"' style="border: 1px solid lightgrey;margin-bottom:5px;border-radius:5px">
+                  <div class='row'>
+                    <div class='col-12' style='text-align: center;font-weight: bold;margin-bottom:10px'>Languages:</div>
+                    <div *ngFor='let i of languages' class="col-3" style="width:20%">
+                      <label style="width:75%" class='tl_forms_item_left_one'>{{i.LangName}}: </label>
+                      <input type="checkbox" name="languages" style='width:25%'>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+            </div>
+          </div>
+        </div>
+  
+        <!--下半部分-->
+        <div class='col-12'>
+          <!--line6 forms-->
+          <div class='row tl_forms'>
+            <!--id type input-->
+            <div *ngIf='command=="Detail"' class='tl_forms_item col-4'>
+              <label for="type" style="width:30%" class='tl_forms_item_left_one'>ID Type: </label>
+              <input #dis type="text" name="idType" id="type" style='width:70%' disabled formControlName='idType'>
+            </div>
+            <div *ngIf='command!=="Detail"' class='tl_forms_item col-4'>
+              <label for="type" style="width:30%" class='tl_forms_item_left_one'>ID Type: </label>
+              <select name="idType" id="idType" style="width:70%" (change)= 'expiredDisabled($event)' formControlName='idType'>
+                <option value="passort">Passport</option>
+                <option value="driverLicense">Driver License</option>
+              </select>
+            </div>
+            <!--id Number input-->
+            <div class='tl_forms_item col-4'>
+              <label for="idNumber" style="width:40%">ID Number: </label>
+              <input #dis type="text" name="idNumber" id="idNumber" style='width:60%' disabled formControlName='idNumber'>
+            </div>
+            <!--id Number input-->
+            <div class='tl_forms_item col-4'>
+              <label for="expired" style="width:28%">Expired: </label>
+              <input *ngIf='command=="Detail"' type="text" name="expired" id="expired" style='width:72%' disabled formControlName='expired'>
+              <input #date *ngIf='command!=="Detail"' type="date" name="expired" id="expired" style='width:72%' formControlName='expired'>
+            </div>
+          </div>
+          <!--line7 forms-->
+          <div class='row tl_forms'>
+            <!--mon input-->
+            <div class='tl_forms_item col-4'>
+              <label for="mon" style="width:20%" class='tl_forms_item_left_one'>Mon:</label>
+              <input *ngIf='command=="Detail"' #dis type="text" name='mon' id='mon' style="width:80%" disabled formControlName='mon'>
+              <select *ngIf='command!=="Detail"' name='mon' id='mon' style="width: 80%" (change)='a($event)' formControlName='mon'>
+                <option value="null" disabled>Please Select</option>
+                <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+              </select>
+            </div>
+            <!--tue input-->
+            <div class='tl_forms_item col-4'>
+              <label for="tue" style="width:20%">Tue:</label>
+              <input *ngIf='command=="Detail"' #dis type="text" name='tue' id='tue' style="width:80%" disabled formControlName='tue'>
+              <select *ngIf='command!=="Detail"' name='tue' id='tue' style="width: 80%" (change)='a($event)' formControlName='tue'>
+                <option value="null" disabled>Please Select</option>
+                <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+              </select>
+            </div>
+            <!--wed input-->
+            <div class='tl_forms_item col-4'>
+              <label for="wed" style="width:20%">Wed:</label>
+              <input *ngIf='command=="Detail"' #dis type="text" name='wed' id='wed' style="width:80%" disabled formControlName='wed'>
+              <select *ngIf='command!=="Detail"' name='wed' id='wed' style="width: 80%" (change)='a($event)' formControlName='wed'>
+                <option value="null" disabled>Please Select</option>
+                <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+              </select>
+            </div>
+            <!--thu input-->
+            <div class='tl_forms_item col-4'>
+              <label for="thu" style="width:20%" class='tl_forms_item_left_one'>Thu:</label>
+              <input *ngIf='command=="Detail"' #dis type="text" name='thu' id='thu' style="width:80%" disabled formControlName='thu'>
+              <select *ngIf='command!=="Detail"' name='thu' id='thu' style="width: 80%" (change)='a($event)' formControlName='thu'>
+                <option value="null" disabled>Please Select</option>
+                <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+              </select>
+            </div>
+            <!--fri input-->
+            <div class='tl_forms_item col-4'>
+              <label for="fri" style="width:20%">Fri:</label>
+              <input *ngIf='command=="Detail"' #dis type="text" name='fri' id='fri' style="width:80%" disabled formControlName='fri'>
+              <select *ngIf='command!=="Detail"' name='fri' id='fri' style="width: 80%" (change)='a($event)' formControlName='fri'>
+                <option value="null" disabled>Please Select</option>
+                <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+              </select>
+            </div>
+            <!--sat input-->
+            <div class='tl_forms_item col-4'>
+              <label for="sat" style="width:20%">Sat:</label>
+              <input *ngIf='command=="Detail"' #dis type="text" name='sat' id='sat' style="width:80%" disabled formControlName='sat'>
+              <select *ngIf='command!=="Detail"' name='sat' id='sat' style="width: 80%" (change)='a($event)' formControlName='sat'>
+                <option value="null" disabled>Please Select</option>
+                <option value="{{i.OrgId}}" *ngFor='let i of orgs'>{{i.OrgName}}</option>
+              </select>
+            </div>
+          </div>
+        </div> 
+  
+      </div>
+    </form> 
+  </div>

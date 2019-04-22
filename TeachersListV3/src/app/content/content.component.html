@@ -1,0 +1,55 @@
+<div class='container'>
+  <div class='row'>
+    <!--content title-->
+    <div class='col-12 tl_content_title'>
+      Teachers List
+      <span class='tl_content_add btn btn-info' (click)='popUpModal("Add",null)'>+ Add More</span>
+    </div>
+
+    <!--content search-->
+    <div class='col-12 tl_content_search_area'>
+      <span class='fas fa-search'></span>&nbsp;
+      <input type="text" (input)='pagination($event)' placeholder=" Search by name" class='tl_content_search'>
+    </div>
+
+    <!--content main-->
+    <div class='col-12'>
+      <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th scope='col' class='tl_content_table_title'>#</th>
+            <th scope='col' class='tl_content_table_title'>First Name</th>
+            <th scope="col" class="tl_content_table_title">Last Name</th>
+            <th scope='col' class='tl_content_table_title'>Gender</th>
+            <th scope='col' class='tl_content_table_title'>Moblie Phone</th>
+            <th scope='col' class='tl_content_table_title'>Email</th>
+            <th scope='col' class='tl_content_table_title'></th>
+          </tr>
+        </thead>
+        <tbody> 
+          <!-- dataTable-->
+          <tr *ngFor = 'let i of teachersList | slice: (page-1)* pageSize : (page-1) * pageSize + pageSize'>
+            <th scope="row" class='tl_content_table_id'>{{i.id}}</th>
+            <td>{{i.firstName}}</td>
+            <td>{{i.lastName}}</td>
+            <td>{{i.gender}}</td>
+            <td>{{i.mobilePhone}}</td>
+            <td>{{i.email}}</td>
+            <td class='tl_content_table_btns'>
+              <button class='btn btn-sm btn-info tl_content_table_btn' (click)='popUpModal("Detail",i)'>Detail</button> 
+              <button class='btn btn-sm btn-warning tl_content_table_btn' (click)='popUpModal("Edit",i)'><span class='fas fa-pen'></span>&nbsp;&nbsp;Edit</button>
+              <button class='btn btn-sm btn-danger tl_content_table_btn' (click)='popUpModal("Delete",i)'>Delete</button> 
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!--content pagination-->
+    <div class='col-12'>
+      <ngb-pagination [collectionSize] = 'teachersListLength' [(page)] ='page' [pageSize]='pageSize'></ngb-pagination>
+    </div> 
+        
+    
+  </div>
+</div>

@@ -1,0 +1,50 @@
+.container{
+    min-height: 800px;
+}
+.tl_content_title{
+    height:80px;
+    font-size:30px;
+    font-weight: 330;
+    line-height: 80px;
+    color:grey;
+    text-align: center;
+}
+.tl_content_add{
+    float: right;
+    margin-top: 25px;
+}
+.tl_content_add:hover{
+    cursor: pointer;
+}
+.tl_content_search_area{
+    margin-bottom: 10px;
+}
+.tl_content_search{
+    width: 250px;
+    height: 40px;
+    border: 0;
+    border: 1px solid #17a2b8;
+    border-radius: 5px;
+    font-size:18px;
+}
+.tl_content_table_title{
+    text-align: left;
+}
+.tl_content_table_btns{
+    padding-right:0;
+}
+.tl_content_table_btn{
+    margin-left: 10px;
+}
+.btn-info{
+    background: #71beca;
+}
+.btn-warning{
+    background: #f1ce63;
+}
+.btn-danger{
+    background: rgb(231, 122, 133);
+}
+.fa-search{
+    color:grey;
+}

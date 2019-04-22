@@ -1,0 +1,45 @@
+<!--modal header-->
+<div class="modal-header">
+  <h4 class="modal-title" *ngIf='command !== "Detail"'>{{command}}</h4>
+  <h4 class='modal-title' *ngIf='command == "Detail"'>{{command}}s of {{teacher.firstName}} {{teacher.lastName}}</h4>
+  <button type="button" class='btn btn-sm btn-info tl_modal_btn' aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+
+<!--modal body-->
+<div class='modal-body'>
+  <!--detail body-->
+  <div *ngIf='command=="Detail"' class='tl_modal_body'>
+    <app-modal-form [command]='command' [teacher]='teacher' #MFComponent></app-modal-form>
+  </div>
+
+  <!--edit body-->
+  <div *ngIf='command=="Edit"' class='tl_modal_body'>
+    <app-modal-form [command]='command' [teacher]='teacher' #MFComponent></app-modal-form>
+  </div>
+
+  <!--delete body-->
+  <div *ngIf='command=="Delete"' class='tl_modal_body'>
+    Are you sure to delete <span class='tl_modal_delete_font'>{{teacher.firstName}} {{teacher.lastName}}</span>?
+  </div>
+
+  <!--add body-->
+  <div *ngIf='command=="Add"' class='tl_modal_body'>
+    <app-modal-form [command]='command' [teacher]='teacher' #MFComponent></app-modal-form>
+  </div>
+
+</div>
+
+<!--modal footer-->
+<div class='modal-footer'>
+  <!--save btn in Edit / Add mode-->
+  <button *ngIf='command =="Edit" || command =="Add"' type='button' class='btn btn-outline-dark' (click)='submit()'>Save</button>
+  <!--close btn in Edit / Add / Detail mode-->
+  <button *ngIf='command !=="Delete"' type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+
+  <!--delete btn in Delete mode-->
+  <button *ngIf='command =="Delete"' type='button' class='btn btn-outline-dark'>Delete</button>
+  <!--cancel btn in Delete mode-->
+  <button *ngIf='command =="Delete"' type='button' class='btn btn-outline-dark' (click)="activeModal.close('Close click')">Cancel</button>
+</div>
