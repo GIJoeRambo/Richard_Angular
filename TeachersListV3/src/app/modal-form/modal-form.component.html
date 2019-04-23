@@ -97,7 +97,7 @@
                     <div class='col-12' style='text-align: center;font-weight: bold;margin-bottom:10px'>Languages:</div>
                     <div *ngFor='let i of languages' class="col-3" style="width:20%">
                       <label style="width:75%" class='tl_forms_item_left_one'>{{i.LangName}}: </label>
-                      <input type="checkbox" name="languages" style='width:25%'>
+                      <input type="checkbox" name="languages" style='width:25%' value={{i.LangId}}>
                     </div>
                   </div>
                 </div>
