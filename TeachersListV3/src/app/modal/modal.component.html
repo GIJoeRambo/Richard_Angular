@@ -1,7 +1,7 @@
 <!--modal header-->
 <div class="modal-header">
   <h4 class="modal-title" *ngIf='command !== "Detail"'>{{command}}</h4>
-  <h4 class='modal-title' *ngIf='command == "Detail"'>{{command}}s of {{teacher.firstName}} {{teacher.lastName}}</h4>
+  <h4 class='modal-title' *ngIf='command == "Detail"'>{{command}}s of {{teacher.FirstName}} {{teacher.LastName}}</h4>
   <button type="button" class='btn btn-sm btn-info tl_modal_btn' aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>
   </button>
@@ -21,7 +21,7 @@
 
   <!--delete body-->
   <div *ngIf='command=="Delete"' class='tl_modal_body'>
-    Are you sure to delete <span class='tl_modal_delete_font'>{{teacher.firstName}} {{teacher.lastName}}</span>?
+    Are you sure to delete <span class='tl_modal_delete_font'>{{teacher.FirstName}} {{teacher.LastName}}</span>?
   </div>
 
   <!--add body-->
@@ -39,7 +39,7 @@
   <button *ngIf='command !=="Delete"' type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
 
   <!--delete btn in Delete mode-->
-  <button *ngIf='command =="Delete"' type='button' class='btn btn-outline-dark'>Delete</button>
+  <button *ngIf='command =="Delete"' type='button' class='btn btn-outline-dark' (click)='delete()'>Delete</button>
   <!--cancel btn in Delete mode-->
   <button *ngIf='command =="Delete"' type='button' class='btn btn-outline-dark' (click)="activeModal.close('Close click')">Cancel</button>
 </div>

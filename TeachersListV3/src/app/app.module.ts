@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap' 
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -10,7 +10,8 @@ import { TeachersService } from './teachers.service';
 import { HttpClientModule } from '@angular/common/http';
 import { ModalComponent } from './modal/modal.component';
 import { ModalFormComponent } from './modal-form/modal-form.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { GenderFormatPipe } from './gender-format.pipe';
 
 @NgModule({
   declarations: [
@@ -19,13 +20,15 @@ import { ReactiveFormsModule } from '@angular/forms';
     ContentComponent,
     FooterComponent,
     ModalComponent,
-    ModalFormComponent
+    ModalFormComponent,
+    GenderFormatPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   entryComponents:[
     ModalComponent

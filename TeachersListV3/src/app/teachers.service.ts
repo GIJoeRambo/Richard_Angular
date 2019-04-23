@@ -7,7 +7,7 @@ import { TouchSequence } from 'selenium-webdriver';
 })
 
 export class TeachersService {
-  private teachersUrl:string = "/assets/data/teachers.json";
+  private teachersUrl:string = "http://192.168.178.76:5000/api/teacher";
   private serverUrl:string = 'http://35.197.183.118:5000/api/register/teacher'
   private teachersListFormService;
   private apisFromService;
