@@ -1,0 +1,14 @@
+.tl_mu_title{
+    font-weight: bold;
+    font-style: italic;
+}
+.tl_mu_btn{
+    background: white;
+    border: 1px solid black;
+    color:black;
+}
+.tl_mu_btn:hover{
+    background: #343A40;
+    border: 1px solid #343a40;
+    color:white;
+}

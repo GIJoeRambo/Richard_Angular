@@ -24,7 +24,8 @@ export class ContentComponent implements OnInit {
     //subscribe teachers
     this.teachersService.getTeachersList().subscribe((data) =>
     {
-      this.teachersList = data;
+      this.teachersList = data.Data;
+      console.log(this.teachersList);
       this.teachersListLength = data.length;
       this.temTeachersList = data;
       this.temTeachersListLength = data.length;

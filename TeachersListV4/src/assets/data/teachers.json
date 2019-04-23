@@ -1,0 +1,15 @@
+[
+    {"id":1,"FirstName":"Richard","LastName":"Wang","Gender":"male","Dob":"1995/02/09","weeks":["Mon","Tue"],"languages":[1,"Russian","English","Korean","Japanese"]},
+    {"id":2,"FirstName":"Renee","LastName":"Wang","Gender":"female","Dob":"1995/02/09","weeks":["Fri"],"languages":["Chinese"]},
+    {"id":3,"FirstName":"Moci","LastName":"Wang","Gender":"male","Dob":"1995/02/09","languages":["Chinese","English"]},
+    {"id":4,"FirstName":"Rebeca","LastName":"Wang","Gender":"female","email":"a85215263@gmail.com"},
+    {"id":5,"FirstName":"a","LastName":"Wang","Gender":"male","Dob":"1995/02/09","languages":[1,2,3,4]},
+    {"id":6,"FirstName":"b","LastName":"Wang","Gender":"male","Dob":"1995/02/09"},
+    {"id":7,"FirstName":"c","LastName":"Wang","Gender":"male","Dob":"1995/02/09","weeks":["Mon","Tue"],"languages":["Chinese","Russian","English","Korean","Japanese"]},
+    {"id":8,"FirstName":"d","LastName":"Wang","Gender":"female","Dob":"1995/02/09","weeks":["Fri"],"languages":["Chinese"]},
+    {"id":9,"FirstName":"e","LastName":"Wang","Gender":"male","Dob":"1995/02/09","languages":["Chinese","English"]},
+    {"id":10,"FirstName":"f","LastName":"Wang","Gender":"female"},
+    {"id":11,"FirstName":"g","LastName":"Wang","Gender":"male","Dob":"1995/02/09"},
+    {"id":12,"FirstName":"h","LastName":"Wang","Gender":"male","Dob":"1995/02/09"}
+
+]

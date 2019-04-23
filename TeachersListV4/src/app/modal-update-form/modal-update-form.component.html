@@ -1,0 +1,70 @@
+<div class='tl_muf_table'>
+  <form action="" [formGroup]='updateForm'>
+    <div class='row'>
+      <!--上半部分-->
+      <div class='col-12'>
+        <div class='row'>
+          <!--img area-->
+          <div class='col-3 tl_muf_photo'>
+            11
+            <img src="" alt="">
+          </div>
+          <!--input area-->
+          <div class='col-9'>
+            <!--line1-->
+            <div class='row'>
+              <!--firstName input-->
+              <div class='col-4 tl_muf_form'>
+                <label for="firstName" class='col-6 tl_muf_lables tl_muf_lables_left'>FirstName:</label>
+                <input type="text" name="FirstName" id="firstName" class='col-6 tl_muf_inputs'> <!--都没填formControlName-->
+              </div>
+              <!--lastName input-->
+              <div class='col-4 tl_muf_form'>
+                <label for="lastName" class='col-6 tl_muf_lables'>LastName:</label>
+                <input type="text" name="LastName" id="lastName" class='col-6 tl_muf_inputs'>
+              </div>
+              <!--lastName input-->
+              <div class='col-4 tl_muf_form'>
+                <label for="lastName" class='col-5 tl_muf_lables'>Gender:</label>
+                <!--if Edit-->
+                <select *ngIf='command=="Edit"' type="text" name="LastName" id="lastName" class='col-7 tl_muf_inputs' formControlName='gender'>
+                  <option value="0" [selected]='witchTeacher.Gender==0'>Female</option>
+                  <option value="1" [selected]='witchTeacher.Gender==1'>Male</option>
+                </select>
+                <!--if Add-->
+                <select *ngIf='command=="Add"' type="text" name="LastName" id="lastName" class='col-7 tl_muf_inputs' formControlName='gender'>
+                  <option value="0">Female</option>
+                  <option value="1">Male</option>
+                </select>
+              </div>        
+            </div>
+
+            <!--line2-->
+            <div class='row'>
+              <!--dob input-->
+              <div class='col-5 tl_muf_form'>
+                <label for="dob" class='col-2 tl_muf_lables tl_muf_lables_left'>Dob:</label>
+                <input type="date" name="Dob" id="dob" class='col-10 tl_muf_inputs' formControlName='dob'> <!--都没填formControlName-->
+              </div>
+              <!--qualification input-->
+              <div class='col-7 tl_muf_form'>
+                <label for="qualification" class='col-4 tl_muf_lables'>Qualification:</label>
+                <select [compareWith]='equal' *ngIf='command=="Edit"' type='text' name="Qualification" id="qualification" class='col-8 tl_muf_inputs' formControlName='quali'>
+                  <option *ngFor='let i of qualificationsListFromService' value=''>{{i.QualiName}} {{i.QualiId}} {{teacherQualiId}}</option>
+                </select> 
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--下半部分-->
+      <div class='col-12'>
+        <div class='row'>
+          
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

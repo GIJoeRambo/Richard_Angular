@@ -1,0 +1,56 @@
+<div class='container tl_body'>
+  <div class='row'>
+    <!--body head-->
+    <div class='col-12 tl_body_title'>
+      Teachers List
+      <!--add more btn-->
+      <span class='tl_body_add btn btn-info' (click)='update("Add",null)'>+ Add More</span>
+    </div>
+
+    <!--body search-->
+    <div class='col-12 tl_body_search'>
+      <span class='fas fa-search'></span>&nbsp;
+      <input type="text" (input)='pagination($event)' placeholder=" Search by name">
+    </div>
+
+    <!--body main-->
+    <div class='col-12'>
+      <table class='table table-striped'>
+        <thead>
+          <tr>
+            <th scope='col' class='tl_body_table_head'>#</th>
+            <th scope='col' class='tl_body_table_head'>First Name</th>
+            <th scope="col" class="tl_body_table_head">Last Name</th>
+            <th scope="col" class="tl_body_table_head">Gender</th>
+            <th scope='col' class='tl_body_table_head'>Moblie Phone</th>
+            <th scope='col' class='tl_body_table_head'>Email</th>
+            <th scope='col' class='tl_body_table_head'></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- dataTable-->
+          <tr *ngFor = 'let i of teachersList | slice: (page-1)* pageSize : (page-1) * pageSize + pageSize; let j = index'>
+            <th scope="row">{{j+1}}</th>
+            <td>{{i.FirstName}}</td>
+            <td>{{i.LastName}}</td>
+            <td>{{i.Gender | genderFormat}}</td>
+            <td>{{i.MobilePhone}}</td>
+            <td>{{i.Email}}</td>
+            <td class='tl_body_table_btns'>
+              <span class='fas fa-info-circle tl_body_table_btn'></span>
+              <span class='fas fa-pen tl_body_table_btn' (click)='update("Edit",i)'></span>
+              <span class='fas fa-trash-alt tl_body_table_btn' (click)='delete("Delete",i)'></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!--body pagination-->
+    <div class='col-12'>
+      <ngb-pagination [collectionSize] = 'teachersListLength' [(page)] ='page' [pageSize]='pageSize'></ngb-pagination>
+    </div> 
+
+
+  </div>
+</div>

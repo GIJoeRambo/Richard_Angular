@@ -1,0 +1,17 @@
+.tl_md_btn{
+    background: white;
+    border: 1px solid black;
+    color:black;
+}
+.tl_md_btn:hover{
+    background: #343A40;
+    border: 1px solid #343a40;
+    color:white;
+}
+.tl_md_body{
+    font-size: 18px;
+}
+.tl_md_body_name{
+    font-weight: bold;
+    font-style: italic;
+}

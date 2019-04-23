@@ -20,7 +20,6 @@
             <th scope='col' class='tl_content_table_title'>#</th>
             <th scope='col' class='tl_content_table_title'>First Name</th>
             <th scope="col" class="tl_content_table_title">Last Name</th>
-            <th scope='col' class='tl_content_table_title'>Gender</th>
             <th scope='col' class='tl_content_table_title'>Moblie Phone</th>
             <th scope='col' class='tl_content_table_title'>Email</th>
             <th scope='col' class='tl_content_table_title'></th>
@@ -29,12 +28,11 @@
         <tbody> 
           <!-- dataTable-->
           <tr *ngFor = 'let i of teachersList | slice: (page-1)* pageSize : (page-1) * pageSize + pageSize'>
-            <th scope="row" class='tl_content_table_id'>{{i.id}}</th>
-            <td>{{i.firstName}}</td>
-            <td>{{i.lastName}}</td>
-            <td>{{i.gender}}</td>
-            <td>{{i.mobilePhone}}</td>
-            <td>{{i.email}}</td>
+            <th scope="row" class='tl_content_table_id'>{{i.TeacherId}}</th>
+            <td>{{i.FirstName}}</td>
+            <td>{{i.LastName}}</td>
+            <td>{{i.MobilePhone}}</td>
+            <td>{{i.Email}}</td>
             <td class='tl_content_table_btns'>
               <button class='btn btn-sm btn-info tl_content_table_btn' (click)='popUpModal("Detail",i)'>Detail</button> 
               <button class='btn btn-sm btn-warning tl_content_table_btn' (click)='popUpModal("Edit",i)'><span class='fas fa-pen'></span>&nbsp;&nbsp;Edit</button>

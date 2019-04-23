@@ -1,0 +1,23 @@
+.tl_muf_photo{
+    background: red;
+    
+    min-height: 200px;
+}
+.tl_muf_form{
+    margin-bottom: 10px;
+}
+.tl_muf_lables{
+    font-weight: bold;
+    text-align: center;
+}
+.tl_muf_lables_left{
+    text-align: left!important;
+}
+.tl_muf_inputs{
+    text-align: center;
+    text-align-last: center;
+    width: 100%;
+    border:none;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}

@@ -17,6 +17,14 @@ export class ModalFormComponent implements OnInit {
   private languages;
   private orgs;
   private temLan;
+  private ifEnglishChecked:boolean = false;
+  private eng = false;
+  private ifMandrinChecked:boolean = false;
+  private mand = false;
+  private ifCantoneseChecked:boolean = false;
+  private canton = false;
+  private ifSpanishChecked:boolean = false;
+  private spanish = false;
 
   @Input() command;
   @Input() teacher;
@@ -52,6 +60,10 @@ export class ModalFormComponent implements OnInit {
         expired:[''],
         irdNumber:[''],
         languages:[''],
+        english:[''],
+        mandrin:[''],
+        cantonese:[''],
+        spanish:[''],
         mon:[''],
         tue:[''],
         wed:[''],
@@ -62,20 +74,43 @@ export class ModalFormComponent implements OnInit {
     }
     //Detail, Edit mode, parent component pass the teachers data
     else{
+      for(let i in this.teacher.languages){
+        //console.log(this.teacher.languages[i])
+        if(this.teacher.languages[i] == 1){
+          this.ifEnglishChecked = true;
+          this.eng = true;
+        }
+        else if(this.teacher.languages[i] == 2){
+          this.ifMandrinChecked = true;
+          this.mand = true;
+        }
+        else if(this.teacher.languages[i] == 3){
+          this.ifCantoneseChecked = true;  
+          this.canton = true; 
+        }
+        else if(this.teacher.languages[i] == 4){
+          this.ifSpanishChecked = true;
+          this.spanish = true;
+        }
+      }
       this.groupObj = {
-        firstName:[this.teacher.firstName || ''],
-        lastName:[this.teacher.lastName || ''],
-        dob:[this.teacher.dob || ''],
-        qualifications:[this.teacher.qualifications || ''],
-        gender:[this.teacher.gender || ''],
-        email:[this.teacher.email || ''],
-        mobilePhone:[this.teacher.mobilePhone ||''],
-        homePhone:[this.teacher.homePhone || ''],
-        idType:[this.teacher.idType || ''],
-        idNumber:[this.teacher.idNumber || ''],
-        expired:[this.teacher.expiredDate || ''],
-        irdNumber:[this.teacher.irdNumber || ''],
+        firstName:[this.teacher.FirstName || ''],
+        lastName:[this.teacher.LastName || ''],
+        dob:[this.teacher.Dob || ''],
+        qualifications:[this.teacher.Qualifications || ''],
+        gender:[this.genderFormat() || ''],
+        email:[this.teacher.Email || ''],
+        mobilePhone:[this.teacher.MobilePhone ||''],
+        homePhone:[this.teacher.HomePhone || ''],
+        idType:[this.teacher.IdType || ''],
+        idNumber:[this.teacher.IdNumber || ''],
+        expired:[this.teacher.ExpiredDate || ''],
+        irdNumber:[this.teacher.IrdNumber || ''],
         languages:['' || ''],
+        english:[this.eng ||''],
+        mandrin:[this.mand || ''],
+        cantonese:[this.canton ||''],
+        spanish:[this.spanish ||''],
         mon:['' || 'Not Avaliable'],
         tue:['' || 'Not Avaliable'],
         wed:['' || 'Not Avaliable'],
@@ -94,7 +129,7 @@ export class ModalFormComponent implements OnInit {
       this.languages = this.datas.Data.Languages;
       //console.log('Languages',this.languages)
       this.qualifications = this.datas.Data.qualifications;
-      console.log(this.qualifications)
+      //console.log(this.qualifications)
       this.orgs = this.datas.Data.Orgs;
       //console.log('Orgs',this.orgs)
     },
@@ -122,6 +157,22 @@ export class ModalFormComponent implements OnInit {
     }
 
   }
+
+  genderFormat(){
+    if(this.teacher.Gender == 0){
+      return "Female"
+    }
+    if(this.teacher.Gender == 1){
+      return "Male"
+    }
+  }
+
+  genderCompare(o1,o2){
+    console.log(o1)
+    return o1&&o2?o1['Id']===o2['ISd']:o1===o2;
+  }
+
+
   a(e){
     
   }
