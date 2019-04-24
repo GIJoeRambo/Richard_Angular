@@ -1,3 +1,8 @@
+.tl_muf_table{
+    border: 1px solid lightblue;
+    padding: 12px;
+    border-radius:10px;
+}
 .tl_muf_photo{
     background: red;
     
@@ -20,4 +25,17 @@
     border:none;
     border: 1px solid lightgrey;
     border-radius: 5px;
+}
+
+
+#languages{
+    text-align: center;
+    font-weight: bold;
+}
+#tl_muf_form_languages{
+    border:1px solid lightgray;
+    border-radius: 5px;
+}
+.tl_muf_form_bottom_area{
+    margin-top:10px;
 }

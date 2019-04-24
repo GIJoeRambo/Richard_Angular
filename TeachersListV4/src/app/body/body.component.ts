@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TeachersService } from '../teachers.service';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
 import { ModalUpdateComponent } from '../modal-update/modal-update.component';
 import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
 
@@ -69,6 +69,12 @@ export class BodyComponent implements OnInit {
     modalRef.componentInstance.command = 'Delete';
     modalRef.componentInstance.witchTeacher = witchTeacher;
     
+  }
+
+  showDetail(command,witchTeacher){
+    const modalRef = this.modalService.open(ModalUpdateComponent,{size:'lg'})
+    modalRef.componentInstance.command = 'Detail';
+    modalRef.componentInstance.witchTeacher = witchTeacher;
   }
 
 

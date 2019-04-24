@@ -16,23 +16,23 @@
               <!--firstName input-->
               <div class='col-4 tl_muf_form'>
                 <label for="firstName" class='col-6 tl_muf_lables tl_muf_lables_left'>FirstName:</label>
-                <input type="text" name="FirstName" id="firstName" class='col-6 tl_muf_inputs'> <!--都没填formControlName-->
+                <input type="text" name="FirstName" id="firstName" class='col-6 tl_muf_inputs' formControlName='firstName'> <!--都没填formControlName-->
               </div>
               <!--lastName input-->
               <div class='col-4 tl_muf_form'>
                 <label for="lastName" class='col-6 tl_muf_lables'>LastName:</label>
-                <input type="text" name="LastName" id="lastName" class='col-6 tl_muf_inputs'>
+                <input type="text" name="LastName" id="lastName" class='col-6 tl_muf_inputs' formControlName='lastName'>
               </div>
               <!--lastName input-->
               <div class='col-4 tl_muf_form'>
                 <label for="lastName" class='col-5 tl_muf_lables'>Gender:</label>
                 <!--if Edit-->
-                <select *ngIf='command=="Edit"' type="text" name="LastName" id="lastName" class='col-7 tl_muf_inputs' formControlName='gender'>
-                  <option value="0" [selected]='witchTeacher.Gender==0'>Female</option>
-                  <option value="1" [selected]='witchTeacher.Gender==1'>Male</option>
+                <select *ngIf='command=="Edit"' type="text" name="Gender" id="gender" class='col-7 tl_muf_inputs' formControlName='gender'>
+                  <option value="0" >Female</option>
+                  <option value="1" >Male</option>
                 </select>
                 <!--if Add-->
-                <select *ngIf='command=="Add"' type="text" name="LastName" id="lastName" class='col-7 tl_muf_inputs' formControlName='gender'>
+                <select *ngIf='command=="Add"' type="text" name="Gender" id="gender" class='col-7 tl_muf_inputs' formControlName='gender'>
                   <option value="0">Female</option>
                   <option value="1">Male</option>
                 </select>
@@ -49,10 +49,48 @@
               <!--qualification input-->
               <div class='col-7 tl_muf_form'>
                 <label for="qualification" class='col-4 tl_muf_lables'>Qualification:</label>
-                <select [compareWith]='equal' *ngIf='command=="Edit"' type='text' name="Qualification" id="qualification" class='col-8 tl_muf_inputs' formControlName='quali'>
-                  <option *ngFor='let i of qualificationsListFromService' value=''>{{i.QualiName}} {{i.QualiId}} {{teacherQualiId}}</option>
+                <select *ngIf='command=="Edit"' type='text' name="Qualification" id="qualification" class='col-8 tl_muf_inputs' formControlName='quali'>
+                  <option *ngFor='let i of qualificationsListFromService' value={{i.QualiId}}>{{i.QualiName}}</option>
                 </select> 
+              </div>
+            </div>
 
+            <!--line3-->
+            <div class='row'>
+              <!--mobile phone input-->
+              <div class='col-6 tl_muf_form' >
+                <label for="mobile" class='col-5 tl_muf_lables tl_muf_lables_left'>Mobile Phone:</label>
+                <input type="text" name='MobilePhone' id='mobile' class='col-7 tl_muf_inputs' formControlName='mobilePh'>
+              </div>
+              <!--home phone input-->
+              <div class='col-6 tl_muf_form' >
+                  <label for="homeph" class='col-5 tl_muf_lables'>Home Phone:</label>
+                  <input type="text" name='HomePhone' id='homeph' class='col-7 tl_muf_inputs' formControlName='homePh'>
+                </div>
+            </div>
+
+            <!--line4-->
+            <div class='row'>
+              <!--email input-->
+              <div class='col-7 tl_muf_form' >
+                <label for="email" class='col-2 tl_muf_lables tl_muf_lables_left'>Email:</label>
+                <input type="text" name='Email' id='email' class='col-10 tl_muf_inputs' formControlName='email'>
+              </div>
+              <!--ird number input-->
+              <div class='col-5 tl_muf_form' >
+                  <label for="ird" class='col-6 tl_muf_lables'>IRD Number:</label>
+                  <input type="text" name='IRDNumber' id='ird' class='col-6 tl_muf_inputs' formControlName='ird'>
+                </div>
+            </div>
+
+            <!--line5-->
+            <div class='row' id='tl_muf_form_languages'>
+              <div class='col-12 tl_muf_form' id='languages'>
+                Languages:
+              </div>
+              <div *ngFor='let i of languagesListFromService' class='col-3 tl_muf_form'>
+                <label for="i.LangName" class='col-5 tl_muf_lables'>{{i.LangName}}</label>
+                <input type="checkbox" name='Language' id='i.LangName' class='col-7 tl_muf_inputs' [checked]='ifChecked(i.LangId)' value='i.LangId' formControlName='languages'>
               </div>
             </div>
           </div>
@@ -60,9 +98,23 @@
       </div>
 
       <!--下半部分-->
-      <div class='col-12'>
+      <div class='col-12 tl_muf_form_bottom_area'>
         <div class='row'>
-          
+          <!--id Type input-->
+          <div class='col-3 tl_muf_form' >
+            <label for="idType" class='col-5 tl_muf_lables tl_muf_lables_left'>ID Type:</label>
+            <input type="text" name='IdType' id='idType' class='col-7 tl_muf_inputs' formControlName='idType'>
+          </div>
+          <!--id number input-->
+          <div class='col-4 tl_muf_form'>
+            <label for="idNumber" class='col-5 tl_muf_lables'>ID Number:</label>
+            <input type="text" name='IDNumber' id='idNumber' class='col-7 tl_muf_inputs' formControlName='idNumber'>
+          </div>
+          <!--expired date input-->
+          <div class='col-5 tl_muf_form'>
+            <label for="expired" class='col-5 tl_muf_lables'>Expired Date:</label>
+            <input type="date" name='ExpiredDate' id='expired' class='col-7 tl_muf_inputs' formControlName='expired'>
+          </div>
         </div>
       </div>
     </div>

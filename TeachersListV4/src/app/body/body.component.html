@@ -37,7 +37,7 @@
             <td>{{i.MobilePhone}}</td>
             <td>{{i.Email}}</td>
             <td class='tl_body_table_btns'>
-              <span class='fas fa-info-circle tl_body_table_btn'></span>
+              <span class='fas fa-info-circle tl_body_table_btn' (click)='showDetail("Detail",i)'></span>
               <span class='fas fa-pen tl_body_table_btn' (click)='update("Edit",i)'></span>
               <span class='fas fa-trash-alt tl_body_table_btn' (click)='delete("Delete",i)'></span>
             </td>

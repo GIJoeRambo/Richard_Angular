@@ -11,7 +11,7 @@ export class TeachersService {
 
   constructor(private http:HttpClient) { 
     this.teachersObjFromService = this.http.get(this.url +'teacher')
-    this.apisFromService = this.http.get(this.url + 'register/teacher')
+    this.apisFromService = this.http.get(this.url + 'qualificationslanguagesorgs')
     //this.teachersObjFromService = this.http.get("/assets/data/teachers.json")
   }
 
