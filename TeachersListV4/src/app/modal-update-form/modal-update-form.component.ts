@@ -17,6 +17,7 @@ export class ModalUpdateFormComponent implements OnInit {
   private languagesListFromService;
   private orgsListFromService;
   private teacherQualiId;
+  private disabledAllInputsFlag: boolean = false;
 
   @Input() witchTeacher;
   @Input() command;
@@ -24,17 +25,11 @@ export class ModalUpdateFormComponent implements OnInit {
   constructor(private fb:FormBuilder, private teachersService:TeachersService) { }
 
   ngOnInit() {
-    if(this.command =='Edit'){
-      if(this.witchTeacher.TeacherQualificatiion.length !== 0){
-        this.teacherQualiId = this.witchTeacher.TeacherQualificatiion[0].TeacherQualiId;
-      }
-      else{
-        this.teacherQualiId = null;
-      }
-    }
 
+    this.isTeacherQualiIdExist();
+    this.disableInputs();
   
-    console.log(this.witchTeacher)
+    console.log('witchTeacher',this.witchTeacher)
   
     if(this.command == 'Add'){
       this.groupObj = {
@@ -56,21 +51,20 @@ export class ModalUpdateFormComponent implements OnInit {
     else{
       this.groupObj = {
         //formControlName 决定了提交表单时的参数名
-        FirstName:[this.witchTeacher.FirstName,Validators.required],
-        LastName:[this.witchTeacher.LastName,Validators.required],
-        Gender:[this.witchTeacher.Gender,Validators.required],
-        //dob:[{value:this.witchTeacher.Dob,disabled:true} || '']
+        FirstName:[{value:this.witchTeacher.FirstName,disabled:this.disabledAllInputsFlag},Validators.required],
+        LastName:[{value:this.witchTeacher.LastName,disabled:this.disabledAllInputsFlag},Validators.required],
+        Gender:[{value:this.witchTeacher.Gender,disabled:this.disabledAllInputsFlag},Validators.required],
         //★★★★★只有当日期格式为YYYY-MM-DD的时候 才会显示出formControlName的默认值
-        Dob:[this.dateFormat(this.witchTeacher.Dob),Validators.required],
-        Qualification:[this.teacherQualiId,Validators.required],
-        MobilePhone:[this.witchTeacher.MobilePhone,Validators.required],
-        HomePhone:[this.witchTeacher.HomePhone,Validators.required],
-        Email:[this.witchTeacher.Email,[Validators.required,Validators.email]],
-        IRDNumber:[this.witchTeacher.IrdNumber,Validators.required],
-        Language:[this.witchTeacher.TeacherLanguage,Validators.required],
-        IDType:['',Validators.required],
-        IDNumber:['',Validators.required],
-        ExpiryDate:['',Validators.required] //用dateFormat
+        Dob:[{value:this.dateFormat(this.witchTeacher.Dob),disabled:this.disabledAllInputsFlag},Validators.required],
+        Qualification:[{value:this.teacherQualiId,disabled:this.disabledAllInputsFlag},Validators.required],
+        MobilePhone:[{value:this.witchTeacher.MobilePhone,disabled:this.disabledAllInputsFlag},Validators.required],
+        HomePhone:[{value:this.witchTeacher.HomePhone,disabled:this.disabledAllInputsFlag},Validators.required],
+        Email:[{value:this.witchTeacher.Email,disabled:this.disabledAllInputsFlag},[Validators.required,Validators.email]],
+        IRDNumber:[{value:this.witchTeacher.IrdNumber,disabled:this.disabledAllInputsFlag},Validators.required],
+        Language:[{value:this.witchTeacher.TeacherLanguage,disabled:this.disabledAllInputsFlag},Validators.required],
+        IDType:[{value:'',disabled:this.disabledAllInputsFlag},Validators.required],
+        IDNumber:[{value:'',disabled:this.disabledAllInputsFlag},Validators.required],
+        ExpiryDate:[{value:'',disabled:this.disabledAllInputsFlag},Validators.required] //用dateFormat
       }
     }
 
@@ -80,8 +74,8 @@ export class ModalUpdateFormComponent implements OnInit {
       this.qualificationsListFromService = data.Data.qualifications;
       this.languagesListFromService = data.Data.Languages;
       this.orgsListFromService = data.Data.Orgs;
-      //console.log(data)
-      //console.log(this.qualificationsListFromService);
+      console.log(this.orgsListFromService)
+
     },
     (error) => {console.log(error)})
   }
@@ -113,5 +107,36 @@ export class ModalUpdateFormComponent implements OnInit {
     //console.log('languages',this.witchTeacher.TeacherLanguage);
     //console.log('langId',langId);
     //console.log('return',this.witchTeacher.TeacherLanguage.indexOf(langId));
+  }
+
+  /*
+    we need to show the default value in the select box
+    but sometimes there's no teacherQualiId in database, so we need to check it,
+    if TeacherQualiId == null then return null (means shows default value as '')
+    else show the value
+  */
+  isTeacherQualiIdExist(){
+    if(this.command =='Edit'){
+      if(this.witchTeacher.TeacherQualificatiion.length !== 0){
+        this.teacherQualiId = this.witchTeacher.TeacherQualificatiion[0].TeacherQualiId;
+      }
+      else{
+        this.teacherQualiId = null;
+      }
+    }
+  }
+
+  /*
+    if command is Detail, then only let user to read data, can't modify
+    'this.disabledAllInputsFlag = true' means it's Detail mode, disabled all inputs, only readable
+    'this.disabledAllInputsFlag = false' means it's Add or Edit mode, users can modify
+  */
+  disableInputs(){
+    if(this.command =='Detail'){
+      this.disabledAllInputsFlag = true;
+    }
+    else{
+      this.disabledAllInputsFlag = false;
+    }
   }
 }

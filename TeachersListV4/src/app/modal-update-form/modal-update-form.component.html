@@ -8,8 +8,8 @@
           <div class='col-3 tl_muf_photo_area'>
             <!-- <img src={{witchTeacher.Photo}} alt=""> -->
             <img class='tl_muf_photo' src="./assets/shared/img/photo.jpg" alt="">
-            <input type="file" name="file" id="file" class="tl_muf_upload_img" /> 
-            <label for="file" class='btn btn-sm tl_muf_upload_img_btn'>Choose a file</label> 
+            <input *ngIf='!disabledAllInputsFlag' type="file" name="file" id="file" class="tl_muf_upload_img" /> 
+            <label *ngIf='!disabledAllInputsFlag' for="file" class='btn btn-sm tl_muf_upload_img_btn'><span class='fas fa-plus tl_muf_upload_img_title'></span></label> 
 
           </div>
           <!--input area-->
@@ -41,6 +41,7 @@
                 <label for="Gender" class='col-5 tl_muf_lables'>Gender:</label>
                 <select type="text" name="Gender" id="Gender" class='col-7 tl_muf_inputs' [class.error_border]='updateForm.get("Gender").invalid &&
                 updateForm.get("Gender").touched' formControlName='Gender'>
+                  <!--如果value的值等于formControlName的值 就会显示相应默认选项-->
                   <option value="0" >Female</option>
                   <option value="1" >Male</option>
                 </select>
@@ -144,6 +145,7 @@
 
       <!--下半部分-->
       <div class='col-12 tl_muf_form_bottom_area'>
+        <!--line6-->
         <div class='row'>
           <!--id Type input-->
           <div class='col-3 tl_muf_form' >
@@ -177,6 +179,62 @@
             updateForm.get("ExpiryDate").touched && updateForm.get("ExpiryDate").errors?.required'>ID Number is required</small>
           </div>
         </div>
+
+        <!--line7 detail mode-->
+        <div *ngIf='command=="Detail"' class='row'>
+          <div class='col-4 tl_muf_weeks'>
+            <div class='row tl_muf_each_week'>
+              <div class='col-12'>Monday</div>
+              <div *ngFor='let i of orgsListFromService' class='col-12 tl_muf_orgName'>{{i.OrgName}}</div>
+            </div>
+          </div>
+          <div class='col-4 tl_muf_weeks'>
+            <div class='row tl_muf_each_week'>
+              <div class='col-12'>Tuesday</div>
+              <div class='col-12'>dnajkdn</div>
+            </div>
+          </div>
+          <div class='col-4 tl_muf_weeks'>
+            <div class='row tl_muf_each_week tl_muf_right_week'>
+              <div class='col-12'>Wednsday</div>
+              <div class='col-12' [style.display]="'none'">dnajkdn</div>
+            </div>
+          </div>
+          <div class='col-4'>
+            <div class='row tl_muf_each_week'>
+              <div class='col-12'>Thursday</div>
+              <div class='col-12'>dnajkdn</div>
+            </div>
+          </div>
+          <div class='col-4'>
+            <div class='row tl_muf_each_week'>
+              <div class='col-12'>Friday</div>
+              <div class='col-12'>dnajkdn</div>
+            </div>
+          </div>
+          <div class='col-4'>
+            <div class='row tl_muf_each_week tl_muf_right_week'>
+              <div class='col-12'>Satday</div>
+              <div class='col-12'>dnajkdn</div>
+            </div>
+          </div>
+        </div>
+
+        <!--line7 Add or Edit mode-->
+        <div *ngIf='command!=="Detail"' class='row' id='tl_muf_branches_select_area'>
+          <div class='col-12' id='tl_muf_branches_select_title'>Please Select Branches</div>
+          <div class='col-4'>
+            <div class='row tl_muf_each_week'>
+              <div class='col-12'>Monday</div>
+              <div *ngFor='let i of orgsListFromService' class='col-12'>
+                <label for="" class='col-10 tl_muf_each_week_label'>{{i.OrgName.replace('BRANCH','')}}</label>
+                <input class='col-2 tl_muf_orgName' type='checkbox'>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
       </div>
     </div>
   </form>

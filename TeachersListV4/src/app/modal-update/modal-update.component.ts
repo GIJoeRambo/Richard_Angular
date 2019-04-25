@@ -22,11 +22,13 @@ export class ModalUpdateComponent implements OnInit {
 
   submit(){
     this.valueToBeSubmitted = this.modalUpdateFormComponentObj.updateForm.value;
-    console.log('original value',this.modalUpdateFormComponentObj.updateForm.value);
-    
-    
 
-    this.checkLanguages();
+    this.valueToBeSubmitted.Language = this.checkLanguages();
+
+    //console.log('original value',this.modalUpdateFormComponentObj.updateForm.value);
+    console.log('value to be submitted',this.valueToBeSubmitted)
+    
+    
     
 
   }

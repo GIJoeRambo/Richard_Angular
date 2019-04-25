@@ -1,6 +1,7 @@
 <!--modal header-->
 <div class="modal-header">
-  <h4 class="modal-title" *ngIf='command !== "Edit"'>{{command}}</h4>
+  <h4 class="modal-title" *ngIf='command == "Add"'>Add More...</h4>
+  <h4 class="modal-title" *ngIf='command == "Detail"'>{{command}}s of <span class='tl_mu_title'>{{witchTeacher.FirstName}} {{witchTeacher.LastName}}</span></h4>
   <h4 class='modal-title' *ngIf='command == "Edit"'>Update <span class='tl_mu_title'>{{witchTeacher.FirstName}} {{witchTeacher.LastName}}</span></h4>
   <button type="button" class='btn btn-sm btn-info tl_mu_btn' aria-label="Close" (click)="activeModal.dismiss('Cross click')">
     <span aria-hidden="true">&times;</span>

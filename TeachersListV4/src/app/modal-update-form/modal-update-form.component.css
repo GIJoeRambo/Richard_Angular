@@ -16,18 +16,28 @@
     opacity: 0;
     position: absolute;
 }
+.tl_muf_upload_img_title{
+    position: relative;
+    left: -7px;
+    top:-5px;
+}
 .tl_muf_upload_img_btn{
+    color:lightblue;
+    width: 20px;
+    height: 20px;
+    font-size: 18px;
+    line-height: 20px;
     background: white;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid white;
+    border-radius: 50%;
     position: absolute;
-    left: 40px;
-    top:178px;
+    left: 140px;
+    top:185px;
     box-shadow: 0px 0px 0px 4px white;
 }
 .tl_muf_upload_img_btn:hover{
     cursor: pointer;
-    background: #343a40;
+    background: lightblue;
     color: white;
 }
 .tl_muf_form{
@@ -49,6 +59,29 @@
     border: 1px solid lightgrey;
     border-radius: 5px;
 }
+.tl_muf_right_week{
+    margin-right: 0!important;
+}
+.tl_muf_weeks{
+    margin-bottom: 10px;
+}
+.tl_muf_each_week{
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+    margin-right:10px;
+}
+.tl_muf_each_week div:nth-child(1){
+    font-weight: bold;
+    text-align: center;
+    border-bottom: 1px solid lightgrey;
+}
+.tl_muf_orgName{
+    text-align: center;
+}
+.tl_muf_each_week_label{
+    text-align: center;
+}
+
 
 
 #languages{
@@ -58,6 +91,10 @@
 #tl_muf_form_languages{
     border:1px solid lightgray;
     border-radius: 5px;
+}
+#tl_muf_branches_select_title{
+    text-align: center;
+    font-weight: bold;
 }
 .tl_muf_form_bottom_area{
     margin-top:10px;
@@ -70,3 +107,5 @@
 .error_message{
     margin-top:-5px;
 }
+
+
