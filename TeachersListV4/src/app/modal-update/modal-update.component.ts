@@ -9,6 +9,7 @@ import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class ModalUpdateComponent implements OnInit {
 
+  private valueToBeSubmitted;
 
   @Input() command;
   @Input() witchTeacher;
@@ -20,7 +21,30 @@ export class ModalUpdateComponent implements OnInit {
   }
 
   submit(){
-    console.log('submit',this.modalUpdateFormComponentObj.updateForm.value)
+    this.valueToBeSubmitted = this.modalUpdateFormComponentObj.updateForm.value;
+    console.log('original value',this.modalUpdateFormComponentObj.updateForm.value);
+    
+    
+
+    this.checkLanguages();
+    
+
+  }
+
+  //to check which language checked
+  checkLanguages(){
+    //子集(modal-update-form)中 languagesCheckBox元素的集合
+    let languageBoxObj = this.modalUpdateFormComponentObj.languagesCheckBox._results;
+    let checkedLanguagesList=[];
+    for(let i in languageBoxObj){
+      //判断如果某languages被选中 就把它添加到temList中
+      if(languageBoxObj[i].nativeElement.checked == true){
+        checkedLanguagesList.push(languageBoxObj[i].nativeElement.value);
+      }
+    }
+
+    return checkedLanguagesList;
+    //console.log(this.checkedLanguagesList)
   }
 
 }

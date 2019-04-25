@@ -5,14 +5,16 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class TeachersService {
-  private url:string = "http://35.197.183.118:5000/api/";
+  private domainData = "./assets/data/teachers.json"
+  private url:string = "http://45.76.123.59:5000/api/";
   private teachersObjFromService;
   private apisFromService;
 
   constructor(private http:HttpClient) { 
+    //this.teachersObjFromService = this.http.get(this.domainData)
     this.teachersObjFromService = this.http.get(this.url +'teacher')
     this.apisFromService = this.http.get(this.url + 'qualificationslanguagesorgs')
-    //this.teachersObjFromService = this.http.get("/assets/data/teachers.json")
+   
   }
 
 

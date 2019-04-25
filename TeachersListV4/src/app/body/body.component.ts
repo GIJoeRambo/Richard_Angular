@@ -25,7 +25,8 @@ export class BodyComponent implements OnInit {
     this.teachersService.getTeachers().subscribe((data) =>
     {
       this.teachersList = data.Data;
-      console.log(this.teachersList);
+      //console.log(data)
+      // console.log(this.teachersList);
       this.teachersListLength = data.Data.length; //length prop is under Data prop
       this.temTeachersList = data.Data;
       this.temTeachersListLength = data.Data.length;

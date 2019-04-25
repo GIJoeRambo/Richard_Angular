@@ -5,9 +5,12 @@
       <div class='col-12'>
         <div class='row'>
           <!--img area-->
-          <div class='col-3 tl_muf_photo'>
-            11
-            <img src="" alt="">
+          <div class='col-3 tl_muf_photo_area'>
+            <!-- <img src={{witchTeacher.Photo}} alt=""> -->
+            <img class='tl_muf_photo' src="./assets/shared/img/photo.jpg" alt="">
+            <input type="file" name="file" id="file" class="tl_muf_upload_img" /> 
+            <label for="file" class='btn btn-sm tl_muf_upload_img_btn'>Choose a file</label> 
+
           </div>
           <!--input area-->
           <div class='col-9'>
@@ -15,43 +18,60 @@
             <div class='row'>
               <!--firstName input-->
               <div class='col-4 tl_muf_form'>
-                <label for="firstName" class='col-6 tl_muf_lables tl_muf_lables_left'>FirstName:</label>
-                <input type="text" name="FirstName" id="firstName" class='col-6 tl_muf_inputs' formControlName='firstName'> <!--都没填formControlName-->
-              </div>
-              <!--lastName input-->
+                <label for="FirstName" class='col-6 tl_muf_lables tl_muf_lables_left'>FirstName:</label>
+                <input type="text" name="FirstName" id="FirstName" class='col-6 tl_muf_inputs' [class.error_border]='updateForm.get("FirstName").invalid &&
+                updateForm.get("FirstName").touched' formControlName='FirstName'> <!--都没填formControlName-->
+                <!--firstName error message-->
+                <small class='text-danger col-12 error_message' style='text-align: center' *ngIf='updateForm.get("FirstName").invalid &&
+                updateForm.get("FirstName").touched && updateForm.get("FirstName").errors?.required'>FirstName is required</small>
+              </div>  
+
+              <!--LastName input-->
               <div class='col-4 tl_muf_form'>
-                <label for="lastName" class='col-6 tl_muf_lables'>LastName:</label>
-                <input type="text" name="LastName" id="lastName" class='col-6 tl_muf_inputs' formControlName='lastName'>
+                <label for="LastName" class='col-6 tl_muf_lables'>LastName:</label>
+                <input type="text" name="LastName" id="LastName" class='col-6 tl_muf_inputs' [class.error_border]='updateForm.get("LastName").invalid &&
+                updateForm.get("LastName").touched' formControlName='LastName'>
+                <!--LastName error message-->
+                <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("LastName").invalid &&
+                updateForm.get("LastName").touched && updateForm.get("firstName").errors?.required'>LastName is required</small>
               </div>
-              <!--lastName input-->
+
+              <!--Gender input-->
               <div class='col-4 tl_muf_form'>
-                <label for="lastName" class='col-5 tl_muf_lables'>Gender:</label>
-                <!--if Edit-->
-                <select *ngIf='command=="Edit"' type="text" name="Gender" id="gender" class='col-7 tl_muf_inputs' formControlName='gender'>
+                <label for="Gender" class='col-5 tl_muf_lables'>Gender:</label>
+                <select type="text" name="Gender" id="Gender" class='col-7 tl_muf_inputs' [class.error_border]='updateForm.get("Gender").invalid &&
+                updateForm.get("Gender").touched' formControlName='Gender'>
                   <option value="0" >Female</option>
                   <option value="1" >Male</option>
                 </select>
-                <!--if Add-->
-                <select *ngIf='command=="Add"' type="text" name="Gender" id="gender" class='col-7 tl_muf_inputs' formControlName='gender'>
-                  <option value="0">Female</option>
-                  <option value="1">Male</option>
-                </select>
+                <!--Gender error message-->
+                <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("Gender").invalid &&
+                updateForm.get("Gender").touched && updateForm.get("Gender").errors?.required'>Please select the Gender</small>
               </div>        
             </div>
 
             <!--line2-->
             <div class='row'>
-              <!--dob input-->
+              <!--Dob input-->
               <div class='col-5 tl_muf_form'>
-                <label for="dob" class='col-2 tl_muf_lables tl_muf_lables_left'>Dob:</label>
-                <input type="date" name="Dob" id="dob" class='col-10 tl_muf_inputs' formControlName='dob'> <!--都没填formControlName-->
+                <label for="Dob" class='col-2 tl_muf_lables tl_muf_lables_left'>Dob:</label>
+                <input type="date" name="Dob" id="Dob" class='col-10 tl_muf_inputs' [class.error_border]='updateForm.get("Dob").invalid &&
+                updateForm.get("Dob").touched' formControlName='Dob'> <!--都没填formControlName-->
+                <!--Dob error message-->
+                <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("Dob").invalid &&
+                updateForm.get("Dob").touched && updateForm.get("Dob").errors?.required'>Dob is required</small>
               </div>
-              <!--qualification input-->
+
+              <!--Qualification input-->
               <div class='col-7 tl_muf_form'>
-                <label for="qualification" class='col-4 tl_muf_lables'>Qualification:</label>
-                <select *ngIf='command=="Edit"' type='text' name="Qualification" id="qualification" class='col-8 tl_muf_inputs' formControlName='quali'>
+                <label for="Qualification" class='col-4 tl_muf_lables'>Qualification:</label>
+                <select type='text' name="Qualification" id="Qualification" class='col-8 tl_muf_inputs' [class.error_border]='updateForm.get("Qualification").invalid &&
+                updateForm.get("Qualification").touched' formControlName='Qualification'>
                   <option *ngFor='let i of qualificationsListFromService' value={{i.QualiId}}>{{i.QualiName}}</option>
                 </select> 
+                <!--Qualification error message-->
+                <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("Qualification").invalid &&
+                updateForm.get("Qualification").touched && updateForm.get("Qualification").errors?.required'>Qualification is required</small>
               </div>
             </div>
 
@@ -59,28 +79,49 @@
             <div class='row'>
               <!--mobile phone input-->
               <div class='col-6 tl_muf_form' >
-                <label for="mobile" class='col-5 tl_muf_lables tl_muf_lables_left'>Mobile Phone:</label>
-                <input type="text" name='MobilePhone' id='mobile' class='col-7 tl_muf_inputs' formControlName='mobilePh'>
+                <label for="MobilePhone" class='col-5 tl_muf_lables tl_muf_lables_left'>Mobile Phone:</label>
+                <input type="text" name='MobilePhone' id='MobilePhone' class='col-7 tl_muf_inputs' [class.error_border]='updateForm.get("MobilePhone").invalid &&
+                updateForm.get("MobilePhone").touched' formControlName='MobilePhone'>
+                <!--mobile phone error message-->
+                <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("MobilePhone").invalid &&
+                updateForm.get("MobilePhone").touched && updateForm.get("MobilePhone").errors?.required'>Moblie Phone is required</small>
               </div>
+
               <!--home phone input-->
               <div class='col-6 tl_muf_form' >
-                  <label for="homeph" class='col-5 tl_muf_lables'>Home Phone:</label>
-                  <input type="text" name='HomePhone' id='homeph' class='col-7 tl_muf_inputs' formControlName='homePh'>
-                </div>
+                <label for="HomePhone" class='col-5 tl_muf_lables'>Home Phone:</label>
+                <input type="text" name='HomePhone' id='HomePhone' class='col-7 tl_muf_inputs' [class.error_border]='updateForm.get("HomePhone").invalid &&
+                updateForm.get("HomePhone").touched' formControlName='HomePhone'>
+                <!--home phone error message-->
+                <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("HomePhone").invalid &&
+                updateForm.get("HomePhone").touched && updateForm.get("HomePhone").errors?.required'>Home Phone is required</small>
+              </div>
             </div>
 
             <!--line4-->
             <div class='row'>
-              <!--email input-->
+              <!--Email input-->
               <div class='col-7 tl_muf_form' >
-                <label for="email" class='col-2 tl_muf_lables tl_muf_lables_left'>Email:</label>
-                <input type="text" name='Email' id='email' class='col-10 tl_muf_inputs' formControlName='email'>
+                <label for="Email" class='col-2 tl_muf_lables tl_muf_lables_left'>Email:</label>
+                <input type="text" name='Email' id='Email' class='col-10 tl_muf_inputs' [class.error_border]='updateForm.get("Email").invalid &&
+                updateForm.get("Email").touched' formControlName='Email'>
+                <!--Email error message 1-->
+                <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("Email").invalid &&
+                updateForm.get("Email").touched && updateForm.get("Email").errors?.required'>Email is required</small>
+                 <!--Email error message 2-->
+                <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("Email").invalid &&
+                updateForm.get("Email").touched && updateForm.get("Email").errors?.Email'>Email format is not correct</small>
               </div>
-              <!--ird number input-->
+
+              <!--IRDNumber number input-->
               <div class='col-5 tl_muf_form' >
-                  <label for="ird" class='col-6 tl_muf_lables'>IRD Number:</label>
-                  <input type="text" name='IRDNumber' id='ird' class='col-6 tl_muf_inputs' formControlName='ird'>
-                </div>
+                <label for="IRDNumber" class='col-6 tl_muf_lables'>IRD Number:</label>
+                <input type="text" name='IRDNumber' id='IRDNumber' class='col-6 tl_muf_inputs' [class.error_border]='updateForm.get("IRDNumber").invalid &&
+                updateForm.get("IRDNumber").touched' formControlName='IRDNumber'>
+                <!--IRDNumber number error message-->
+                <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("IRDNumber").invalid &&
+                updateForm.get("IRDNumber").touched && updateForm.get("IRDNumber").errors?.required'>IRD Number is required</small>
+              </div>
             </div>
 
             <!--line5-->
@@ -90,7 +131,11 @@
               </div>
               <div *ngFor='let i of languagesListFromService' class='col-3 tl_muf_form'>
                 <label for="i.LangName" class='col-5 tl_muf_lables'>{{i.LangName}}</label>
-                <input type="checkbox" name='Language' id='i.LangName' class='col-7 tl_muf_inputs' [checked]='ifChecked(i.LangId)' value='i.LangId' formControlName='languages'>
+                <!--
+                  🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠 value的值可能会更改 因为暂时不知道用id还是用name
+                  可能的值： value={{i.LangId}}, value={{i.LangName}}
+                -->
+                <input #lan type="checkbox" name='Language' id='i.LangName' class='col-7 tl_muf_inputs' [checked]='ifChecked(i.LangId)' value={{i.LangName}} formControlName='Language'>
               </div>
             </div>
           </div>
@@ -102,18 +147,34 @@
         <div class='row'>
           <!--id Type input-->
           <div class='col-3 tl_muf_form' >
-            <label for="idType" class='col-5 tl_muf_lables tl_muf_lables_left'>ID Type:</label>
-            <input type="text" name='IdType' id='idType' class='col-7 tl_muf_inputs' formControlName='idType'>
+            <label for="IDType" class='col-5 tl_muf_lables tl_muf_lables_left'>ID Type:</label>
+            <select type="text" name='IDType' id='IDType' class='col-7 tl_muf_inputs' [class.error_border]='updateForm.get("IDType").invalid &&
+            updateForm.get("IDType").touched' formControlName='IDType'>
+
+            </select> 
+            <!--id Type error message-->
+            <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("IDType").invalid &&
+            updateForm.get("IDType").touched && updateForm.get("IDType").errors?.required'>ID Type is required</small>
           </div>
+
           <!--id number input-->
           <div class='col-4 tl_muf_form'>
-            <label for="idNumber" class='col-5 tl_muf_lables'>ID Number:</label>
-            <input type="text" name='IDNumber' id='idNumber' class='col-7 tl_muf_inputs' formControlName='idNumber'>
+            <label for="IDNumber" class='col-5 tl_muf_lables'>ID Number:</label>
+            <input type="text" name='IDNumber' id='IDNumber' class='col-7 tl_muf_inputs' [class.error_border]='updateForm.get("IDNumber").invalid &&
+            updateForm.get("IDNumber").touched' formControlName='IDNumber'>
+            <!--id number error message-->
+            <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("IDNumber").invalid &&
+            updateForm.get("IDNumber").touched && updateForm.get("IDNumber").errors?.required'>ID Number is required</small>
           </div>
-          <!--expired date input-->
+
+          <!--ExpiryDate date input-->
           <div class='col-5 tl_muf_form'>
-            <label for="expired" class='col-5 tl_muf_lables'>Expired Date:</label>
-            <input type="date" name='ExpiredDate' id='expired' class='col-7 tl_muf_inputs' formControlName='expired'>
+            <label for="ExpiryDate" class='col-5 tl_muf_lables'>Expired Date:</label>
+            <input type="date" name='ExpiryDate' id='ExpiryDate' class='col-7 tl_muf_inputs' [class.error_border]='updateForm.get("ExpiryDate").invalid &&
+            updateForm.get("ExpiryDate").touched' formControlName='ExpiryDate'>
+            <!--ExpiryDate error message-->
+            <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("ExpiryDate").invalid &&
+            updateForm.get("ExpiryDate").touched && updateForm.get("ExpiryDate").errors?.required'>ID Number is required</small>
           </div>
         </div>
       </div>
