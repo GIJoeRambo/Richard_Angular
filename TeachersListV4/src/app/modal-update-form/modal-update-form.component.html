@@ -148,11 +148,11 @@
         <!--line6-->
         <div class='row'>
           <!--id Type input-->
-          <div class='col-3 tl_muf_form' >
-            <label for="IDType" class='col-5 tl_muf_lables tl_muf_lables_left'>ID Type:</label>
-            <select type="text" name='IDType' id='IDType' class='col-7 tl_muf_inputs' [class.error_border]='updateForm.get("IDType").invalid &&
+          <div class='col-4 tl_muf_form' >
+            <label for="IDType" class='col-4 tl_muf_lables tl_muf_lables_left'>ID Type:</label>
+            <select type="text" name='IDType' id='IDType' class='col-8 tl_muf_inputs' [class.error_border]='updateForm.get("IDType").invalid &&
             updateForm.get("IDType").touched' formControlName='IDType'>
-
+              <option *ngFor='let i of idTypeList' value={{i.idTypeId}}>{{i.idTypeName}}</option>
             </select> 
             <!--id Type error message-->
             <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("IDType").invalid &&
@@ -170,7 +170,7 @@
           </div>
 
           <!--ExpiryDate date input-->
-          <div class='col-5 tl_muf_form'>
+          <div class='col-4 tl_muf_form'>
             <label for="ExpiryDate" class='col-5 tl_muf_lables'>Expired Date:</label>
             <input type="date" name='ExpiryDate' id='ExpiryDate' class='col-7 tl_muf_inputs' [class.error_border]='updateForm.get("ExpiryDate").invalid &&
             updateForm.get("ExpiryDate").touched' formControlName='ExpiryDate'>

@@ -4,6 +4,7 @@ import { TeachersService } from '../teachers.service';
 import { Command } from 'protractor';
 import { queueComponentIndexForCheck } from '@angular/core/src/render3/instructions';
 
+
 @Component({
   selector: 'app-modal-update-form',
   templateUrl: './modal-update-form.component.html',
@@ -18,7 +19,11 @@ export class ModalUpdateFormComponent implements OnInit {
   private orgsListFromService;
   private teacherQualiId;
   private disabledAllInputsFlag: boolean = false;
-
+  private idTypeList = [{'idTypeId': 1, 'idTypeName': 'Driver Lisence'},
+                        {'idTypeId': 2, 'idTypeName': '18+'},
+                        {'idTypeId': 3, 'idTypeName': 'Passport'}];
+  private availableDays = [];
+  
   @Input() witchTeacher;
   @Input() command;
   @ViewChildren('lan') languagesCheckBox; 
@@ -28,6 +33,7 @@ export class ModalUpdateFormComponent implements OnInit {
 
     this.isTeacherQualiIdExist();
     this.disableInputs();
+    this.getAvailableDays();
   
     console.log('witchTeacher',this.witchTeacher)
   
@@ -62,7 +68,7 @@ export class ModalUpdateFormComponent implements OnInit {
         Email:[{value:this.witchTeacher.Email,disabled:this.disabledAllInputsFlag},[Validators.required,Validators.email]],
         IRDNumber:[{value:this.witchTeacher.IrdNumber,disabled:this.disabledAllInputsFlag},Validators.required],
         Language:[{value:this.witchTeacher.TeacherLanguage,disabled:this.disabledAllInputsFlag},Validators.required],
-        IDType:[{value:'',disabled:this.disabledAllInputsFlag},Validators.required],
+        IDType:[{value:this.witchTeacher.IdType,disabled:this.disabledAllInputsFlag},Validators.required],
         IDNumber:[{value:'',disabled:this.disabledAllInputsFlag},Validators.required],
         ExpiryDate:[{value:'',disabled:this.disabledAllInputsFlag},Validators.required] //用dateFormat
       }
@@ -74,7 +80,7 @@ export class ModalUpdateFormComponent implements OnInit {
       this.qualificationsListFromService = data.Data.qualifications;
       this.languagesListFromService = data.Data.Languages;
       this.orgsListFromService = data.Data.Orgs;
-      console.log(this.orgsListFromService)
+      console.log(data)
 
     },
     (error) => {console.log(error)})
@@ -137,6 +143,17 @@ export class ModalUpdateFormComponent implements OnInit {
     }
     else{
       this.disabledAllInputsFlag = false;
+    }
+  }
+  DayOfWeek
+  getAvailableDays(){
+    for(let i of this.witchTeacher.AvailableDays)
+    {
+      if (this.availableDays.length == 0){
+      this.availableDays.push(i.DayOfWeek);
+      
+    }
+      console.log(this.availableDays)
     }
   }
 }

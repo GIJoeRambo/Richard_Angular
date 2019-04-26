@@ -13,6 +13,7 @@ import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
 import { ModalUpdateFormComponent } from './modal-update-form/modal-update-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GenderFormatPipe } from './gender-format.pipe';
+import { IdType } from './id-type.enum';
 
 @NgModule({
   declarations: [

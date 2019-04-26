@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
 export class TeachersService {
   private domainData = "./assets/data/teachers.json"
   private url:string = "http://45.76.123.59:5000/api/";
+  private OliverIp:string = "http://192.168.178.76:5000/api/";
   private teachersObjFromService;
   private apisFromService;
 
