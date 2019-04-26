@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {enableProdMode} from '@angular/core';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -12,8 +12,10 @@ import { ModalUpdateComponent } from './modal-update/modal-update.component';
 import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
 import { ModalUpdateFormComponent } from './modal-update-form/modal-update-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GenderFormatPipe } from './gender-format.pipe';
+import { GenderFormatPipe } from '../assets/shared/pipes/gender-format.pipe';
 import { IdType } from './id-type.enum';
+import { FirstNameComponent } from './form-group/first-name/first-name.component';
+import { WeekFormatPipe } from '../assets/shared/pipes/week-format.pipe';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,9 @@ import { IdType } from './id-type.enum';
     ModalUpdateComponent,
     ModalDeleteComponent,
     ModalUpdateFormComponent,
-    GenderFormatPipe
+    GenderFormatPipe,
+    FirstNameComponent,
+    WeekFormatPipe
   ],
   imports: [
     BrowserModule,

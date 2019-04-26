@@ -1,0 +1,8 @@
+<div class='col-4 tl_muf_form'>
+  <label for="FirstName" class='col-6 tl_muf_lables tl_muf_lables_left'>FirstName:</label>
+  <input type="text" name="FirstName" id="FirstName" class='col-6 tl_muf_inputs' [class.error_border]='updateForm.get("FirstName").invalid &&
+  updateForm.get("FirstName").touched' formControlName='FirstName'> <!--都没填formControlName-->
+  <!--firstName error message-->
+  <small class='text-danger col-12 error_message' style='text-align: center' *ngIf='updateForm.get("FirstName").invalid &&
+  updateForm.get("FirstName").touched && updateForm.get("FirstName").errors?.required'>FirstName is required</small>
+</div>  

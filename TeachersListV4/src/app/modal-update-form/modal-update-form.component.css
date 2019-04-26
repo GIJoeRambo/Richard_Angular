@@ -62,13 +62,25 @@
 .tl_muf_right_week{
     margin-right: 0!important;
 }
+.tl_muf_weeks_area{
+    padding:5px;
+    border: 1px solid lightgrey;
+    border-radius: 5px;
+}
+.tl_muf_weeks_title{
+    font-weight: bold;
+    text-align: center;
+}
 .tl_muf_weeks{
     margin-bottom: 10px;
 }
 .tl_muf_each_week{
     border: 1px solid lightgrey;
     border-radius: 5px;
-    margin-right:10px;
+    margin:5px;
+}
+.tl_muf_each_week_title{
+    background:#f3f1f1;
 }
 .tl_muf_each_week div:nth-child(1){
     font-weight: bold;

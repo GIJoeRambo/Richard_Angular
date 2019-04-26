@@ -10,7 +10,6 @@
             <img class='tl_muf_photo' src="./assets/shared/img/photo.jpg" alt="">
             <input *ngIf='!disabledAllInputsFlag' type="file" name="file" id="file" class="tl_muf_upload_img" /> 
             <label *ngIf='!disabledAllInputsFlag' for="file" class='btn btn-sm tl_muf_upload_img_btn'><span class='fas fa-plus tl_muf_upload_img_title'></span></label> 
-
           </div>
           <!--input area-->
           <div class='col-9'>
@@ -181,43 +180,15 @@
         </div>
 
         <!--line7 detail mode-->
-        <div *ngIf='command=="Detail"' class='row'>
-          <div class='col-4 tl_muf_weeks'>
+        <div *ngIf='command=="Detail"' class='row tl_muf_weeks_area'>
+          <div class='col-12 tl_muf_weeks_title'>Available Days</div>
+          <div *ngFor='let i of availableDays' class='col-4 tl_muf_weeks'>
             <div class='row tl_muf_each_week'>
-              <div class='col-12'>Monday</div>
-              <div *ngFor='let i of orgsListFromService' class='col-12 tl_muf_orgName'>{{i.OrgName}}</div>
+              <div class='col-12 tl_muf_each_week_title'>{{i | weekFormat}}</div>
+              <div *ngFor='let j of getOrgs(i)' class='col-12 tl_muf_orgName'>{{j}}</div>
             </div>
           </div>
-          <div class='col-4 tl_muf_weeks'>
-            <div class='row tl_muf_each_week'>
-              <div class='col-12'>Tuesday</div>
-              <div class='col-12'>dnajkdn</div>
-            </div>
-          </div>
-          <div class='col-4 tl_muf_weeks'>
-            <div class='row tl_muf_each_week tl_muf_right_week'>
-              <div class='col-12'>Wednsday</div>
-              <div class='col-12' [style.display]="'none'">dnajkdn</div>
-            </div>
-          </div>
-          <div class='col-4'>
-            <div class='row tl_muf_each_week'>
-              <div class='col-12'>Thursday</div>
-              <div class='col-12'>dnajkdn</div>
-            </div>
-          </div>
-          <div class='col-4'>
-            <div class='row tl_muf_each_week'>
-              <div class='col-12'>Friday</div>
-              <div class='col-12'>dnajkdn</div>
-            </div>
-          </div>
-          <div class='col-4'>
-            <div class='row tl_muf_each_week tl_muf_right_week'>
-              <div class='col-12'>Satday</div>
-              <div class='col-12'>dnajkdn</div>
-            </div>
-          </div>
+          
         </div>
 
         <!--line7 Add or Edit mode-->
