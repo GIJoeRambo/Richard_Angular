@@ -17,6 +17,7 @@ export class ModalUpdateFormComponent implements OnInit {
   private languagesListFromService;
   private orgsListFromService;
   private teacherQualiId;
+  private teacherQualiName;
   private disabledAllInputsFlag: boolean = false;
   private idTypeList = [{'idTypeId': 1, 'idTypeName': 'Driver Lisence'},
                         {'idTypeId': 2, 'idTypeName': '18+'},
@@ -27,6 +28,7 @@ export class ModalUpdateFormComponent implements OnInit {
   @Input() witchTeacher;
   @Input() command;
   @ViewChildren('lan') languagesCheckBox; 
+  @ViewChildren('branches') branchesCheckBox;
   constructor(private fb:FormBuilder, private teachersService:TeachersService) { }
 
   ngOnInit() {
@@ -35,7 +37,6 @@ export class ModalUpdateFormComponent implements OnInit {
     this.getAvailableDays();
   
     console.log('witchTeacher',this.witchTeacher)
-    //console.log(this.availableDays)
   
     if(this.command == 'Add'){
       this.groupObj = {
@@ -51,7 +52,8 @@ export class ModalUpdateFormComponent implements OnInit {
         Language:['',Validators.required],
         IDType:['',Validators.required],
         IDNumber:['',Validators.required],
-        ExpiryDate:['',Validators.required]
+        ExpiryDate:['',Validators.required],
+        DayOfWeek:['',Validators.required]
       }
     }
     else{
@@ -62,7 +64,7 @@ export class ModalUpdateFormComponent implements OnInit {
         Gender:[{value:this.witchTeacher.Gender,disabled:this.disabledAllInputsFlag},Validators.required],
         //★★★★★只有当日期格式为YYYY-MM-DD的时候 才会显示出formControlName的默认值
         Dob:[{value:this.dateFormat(this.witchTeacher.Dob),disabled:this.disabledAllInputsFlag},Validators.required],
-        Qualification:[{value:this.teacherQualiId,disabled:this.disabledAllInputsFlag},Validators.required],
+        Qualification:[{value:this.teacherQualiName,disabled:this.disabledAllInputsFlag},Validators.required],
         MobilePhone:[{value:this.witchTeacher.MobilePhone,disabled:this.disabledAllInputsFlag},Validators.required],
         HomePhone:[{value:this.witchTeacher.HomePhone,disabled:this.disabledAllInputsFlag},Validators.required],
         Email:[{value:this.witchTeacher.Email,disabled:this.disabledAllInputsFlag},[Validators.required,Validators.email]],
@@ -70,7 +72,8 @@ export class ModalUpdateFormComponent implements OnInit {
         Language:[{value:this.witchTeacher.TeacherLanguage,disabled:this.disabledAllInputsFlag},Validators.required],
         IDType:[{value:this.witchTeacher.IdType,disabled:this.disabledAllInputsFlag},Validators.required],
         IDNumber:[{value:'',disabled:this.disabledAllInputsFlag},Validators.required],
-        ExpiryDate:[{value:'',disabled:this.disabledAllInputsFlag},Validators.required] //用dateFormat
+        ExpiryDate:[{value:'',disabled:this.disabledAllInputsFlag},Validators.required], //用dateFormat
+        DayOfWeek:[{value:'',disabled:this.disabledAllInputsFlag},Validators.required]
       }
     }
 
@@ -80,7 +83,7 @@ export class ModalUpdateFormComponent implements OnInit {
       this.qualificationsListFromService = data.Data.qualifications;
       this.languagesListFromService = data.Data.Languages;
       this.orgsListFromService = data.Data.Orgs;
-      //console.log(data)
+      console.log(this.orgsListFromService)
 
     },
     (error) => {console.log(error)})
@@ -104,9 +107,10 @@ export class ModalUpdateFormComponent implements OnInit {
     else show the value
   */
   isTeacherQualiIdExist(){
-    if(this.command =='Edit'){
+    if(this.command =='Edit' || this.command == 'Detail'){
       if(this.witchTeacher.TeacherQualificatiion.length !== 0){
         this.teacherQualiId = this.witchTeacher.TeacherQualificatiion[0].TeacherQualiId;
+        this.teacherQualiName = this.witchTeacher.TeacherQualificatiion[0].Quali.QualiName;
       }
       else{
         this.teacherQualiId = null;
@@ -114,7 +118,7 @@ export class ModalUpdateFormComponent implements OnInit {
     }
   }
 
-  ifChecked(langId){
+  ifLanguagesChecked(langId){
     if (this.witchTeacher !== null)
     {
       for(let i of this.witchTeacher.TeacherLanguage){
@@ -133,6 +137,26 @@ export class ModalUpdateFormComponent implements OnInit {
     //console.log('return',this.witchTeacher.TeacherLanguage.indexOf(langId));
   }
 
+  ifBranchesChecked(orgId,week){
+    if(this.witchTeacher !== null){
+      let weekId = this.week.indexOf(week) + 1;
+      for(let i of this.witchTeacher.AvailableDays){
+        if(weekId == i.DayOfWeek){
+          if(orgId == i.OrgId){
+            return true; 
+          }    
+      }
+    }
+    return false;
+  }
+
+
+
+
+
+     
+  }
+
   /*
     if command is Detail, then only let user to read data, can't modify
     'this.disabledAllInputsFlag = true' means it's Detail mode, disabled all inputs, only readable
@@ -148,43 +172,29 @@ export class ModalUpdateFormComponent implements OnInit {
   }
   
   getOrgs(witchDay){
-    let temOrgs=[];
-    for(let i of this.witchTeacher.AvailableDays){
-      if(i.DayOfWeek == witchDay){
-        if(temOrgs.indexOf(i.Org.OrgName) == -1){
-          temOrgs.push(i.Org.OrgName);
+    if(this.witchTeacher.AvailableDays.length !== 0){
+      let temOrgs=[];
+      for(let i of this.witchTeacher.AvailableDays){
+        if(i.DayOfWeek == witchDay){
+          if(i.Org !== null){
+              if(temOrgs.indexOf(i.Org.OrgName) == -1){
+              temOrgs.push(i.Org.OrgName);
+            }
+          }
         }
       }
+      return temOrgs;
     }
-    return temOrgs;
   }
   getAvailableDays(){
-   
-    for(let i of this.witchTeacher.AvailableDays)
-    {
-      if(this.availableDays.indexOf(i.DayOfWeek) == -1){
-        this.availableDays.push(i.DayOfWeek)
-      }  
+    if(this.command =='Detail'){
+      for(let i of this.witchTeacher.AvailableDays)
+      {
+        if(this.availableDays.indexOf(i.DayOfWeek) == -1){
+          this.availableDays.push(i.DayOfWeek)
+        }  
+      }
+      console.log(this.availableDays)
     }
-    console.log(this.availableDays)
-  //     if(this.availableDays[i.DayOfWeek-1].length < 2){
-  //       this.availableDays[i.DayOfWeek-1].push(i.Org.OrgId);  
-  //     }  
-  //   }
-    
-  //   this.availableDays = this.availableDays.filter(function(currentVal){
-  //     if(currentVal.length == 1){
-  //       return false;
-  //     }
-  //     else{
-  //       return true;
-  //     }
-  //   });
-
-  //   for(let j of this.availableDays){
-  //     this.week.push(j[0]);
-  //     j.shift();
-  //   }
-  // }
   }
 }

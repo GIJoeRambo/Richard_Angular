@@ -24,6 +24,8 @@ export class ModalUpdateComponent implements OnInit {
     this.valueToBeSubmitted = this.modalUpdateFormComponentObj.updateForm.value;
 
     this.valueToBeSubmitted.Language = this.checkLanguages();
+    this.valueToBeSubmitted.Qualification = this.checkQualifications()
+    this.checkOrgs()
 
     //console.log('original value',this.modalUpdateFormComponentObj.updateForm.value);
     console.log('value to be submitted',this.valueToBeSubmitted)
@@ -47,6 +49,18 @@ export class ModalUpdateComponent implements OnInit {
 
     return checkedLanguagesList;
     //console.log(this.checkedLanguagesList)
+  }
+
+  //server need Qualification type is list<string>
+  //to convert the data 
+  checkQualifications(){
+    let checkQualificationsList = [];
+    checkQualificationsList.push(this.modalUpdateFormComponentObj.updateForm.value.Qualification);
+    return checkQualificationsList;
+  }
+
+  checkOrgs(){
+    console.log(this.modalUpdateFormComponentObj)
   }
 
 }

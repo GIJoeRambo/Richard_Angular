@@ -67,7 +67,7 @@
                 <label for="Qualification" class='col-4 tl_muf_lables'>Qualification:</label>
                 <select type='text' name="Qualification" id="Qualification" class='col-8 tl_muf_inputs' [class.error_border]='updateForm.get("Qualification").invalid &&
                 updateForm.get("Qualification").touched' formControlName='Qualification'>
-                  <option *ngFor='let i of qualificationsListFromService' value={{i.QualiId}}>{{i.QualiName}}</option>
+                <option *ngFor='let i of qualificationsListFromService' value={{i.QualiName}}>{{i.QualiName}}</option>
                 </select> 
                 <!--Qualification error message-->
                 <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("Qualification").invalid &&
@@ -135,7 +135,7 @@
                   🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠 value的值可能会更改 因为暂时不知道用id还是用name
                   可能的值： value={{i.LangId}}, value={{i.LangName}}
                 -->
-                <input #lan type="checkbox" name='Language' id='i.LangName' class='col-7 tl_muf_inputs' [checked]='ifChecked(i.LangId)' value={{i.LangName}} formControlName='Language'>
+                <input #lan type="checkbox" name='Language' id='i.LangName' class='col-7 tl_muf_inputs' [checked]='ifLanguagesChecked(i.LangId)' value={{i.LangName}} formControlName='Language'>
               </div>
             </div>
           </div>
@@ -194,12 +194,12 @@
         <!--line7 Add or Edit mode-->
         <div *ngIf='command!=="Detail"' class='row' id='tl_muf_branches_select_area'>
           <div class='col-12' id='tl_muf_branches_select_title'>Please Select Branches</div>
-          <div class='col-4'>
+          <div *ngFor='let i of week' class='col-4'>
             <div class='row tl_muf_each_week'>
-              <div class='col-12'>Monday</div>
-              <div *ngFor='let i of orgsListFromService' class='col-12'>
-                <label for="" class='col-10 tl_muf_each_week_label'>{{i.OrgName.replace('BRANCH','')}}</label>
-                <input class='col-2 tl_muf_orgName' type='checkbox'>
+              <div class='col-12'>{{i}}</div>
+              <div *ngFor='let j of orgsListFromService' class='col-12'>
+                <label for="" class='col-10 tl_muf_each_week_label'>{{j.OrgName.replace('BRANCH','')}}</label>
+                <input #branches class='col-2 tl_muf_orgName' type='checkbox' name={{i}} value={{j.OrgName}} [checked] = 'ifBranchesChecked(j.OrgId,i)'>
               </div>
             </div>
           </div>
