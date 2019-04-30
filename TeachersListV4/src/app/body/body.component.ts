@@ -10,20 +10,19 @@ import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
   styleUrls: ['./body.component.css']
 })
 export class BodyComponent implements OnInit {
-  private teachersList:any;
-  private teachersListLength:number;
-  private temTeachersList:any;
-  private temTeachersListLength:number;
+  private teachersList: any;
+  private teachersListLength: number;
+  private temTeachersList: any;
+  private temTeachersListLength: number;
   private temPaginationTeacher = [];
-  private page:number = 1;
+  private page: number = 1;
   private pageSize = 10;
 
 
-  constructor(private teachersService:TeachersService,private modalService:NgbModal) { }
+  constructor(private teachersService: TeachersService, private modalService: NgbModal) { }
 
   ngOnInit() {
-    this.teachersService.getTeachers().subscribe((data) =>
-    {
+    this.teachersService.getTeachers().subscribe((data) => {
       this.teachersList = data.Data;
       //console.log(data)
       // console.log(this.teachersList);
@@ -31,49 +30,65 @@ export class BodyComponent implements OnInit {
       this.temTeachersList = data.Data;
       this.temTeachersListLength = data.Data.length;
     },
-    (error) => {console.log(error)})
+      (error) => { console.log(error) })
 
     //this.update('aa',"aa");
   }
 
-  //pagination method
-  pagination(e){
+  //search method
+  search(e) {
     //reset to initial state
     //动了就bug
     this.temPaginationTeacher = [];
     this.teachersList = this.temTeachersList;
     this.teachersListLength = this.temTeachersListLength;
     //动了就bug
-    for(let i of this.teachersList){
-      if(((i['FirstName'].toLowerCase()).search(e.target.value.toLowerCase())) !== -1 || ((i['LastName'].toLowerCase()).search(e.target.value.toLowerCase())) !== -1){
+    for (let i of this.teachersList) {
+      if (i['FirstName'] == null && ((i['LastName'].toLowerCase()).search(e.target.value.toLowerCase())) !== -1) {
+        this.temPaginationTeacher.push(i)
+      }
+      else if (i['LastName'] == null && ((i['FirstName'].toLowerCase()).search(e.target.value.toLowerCase())) !== -1) {
+        this.temPaginationTeacher.push(i)
+      }
+      else if (i['FirstName'] == null && i['LastName'] == null) {
+        break;
+      }
+      else if (i['FirstName'] !== null && i['LastName'] !== null) {
+        if (((i['FirstName'].toLowerCase()).search(e.target.value.toLowerCase())) !== -1 || ((i['LastName'].toLowerCase()).search(e.target.value.toLowerCase())) !== -1) {
           this.temPaginationTeacher.push(i)
         }
       }
-    this.teachersList = this.temPaginationTeacher;
-    this.teachersListLength = this.temPaginationTeacher.length;
+      else {
+        continue;
+      }
+      this.teachersList = this.temPaginationTeacher;
+      this.teachersListLength = this.temPaginationTeacher.length;
+    }
   }
 
-  update(command,witchTeacher){
-    const modalRef = this.modalService.open(ModalUpdateComponent,{size:'lg'})
-    if(command == "Edit"){
+  //update method
+  update(command, witchTeacher) {
+    const modalRef = this.modalService.open(ModalUpdateComponent, { size: 'lg' })
+    if (command == "Edit") {
       modalRef.componentInstance.command = 'Edit';
     }
-    if(command == "Add"){
+    if (command == "Add") {
       modalRef.componentInstance.command = "Add";
     }
-
     modalRef.componentInstance.witchTeacher = witchTeacher;
   }
 
-  delete(command,witchTeacher){
+  //delete method
+  delete(command, witchTeacher) {
     const modalRef = this.modalService.open(ModalDeleteComponent)
     modalRef.componentInstance.command = 'Delete';
     modalRef.componentInstance.witchTeacher = witchTeacher;
-    
+
   }
 
-  showDetail(command,witchTeacher){
-    const modalRef = this.modalService.open(ModalUpdateComponent,{size:'lg'})
+  //showDetail method
+  showDetail(command, witchTeacher) {
+    const modalRef = this.modalService.open(ModalUpdateComponent, { size: 'lg' })
     modalRef.componentInstance.command = 'Detail';
     modalRef.componentInstance.witchTeacher = witchTeacher;
   }

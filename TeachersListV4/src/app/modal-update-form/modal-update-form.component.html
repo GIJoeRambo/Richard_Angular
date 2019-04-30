@@ -32,7 +32,7 @@
                 updateForm.get("LastName").touched' formControlName='LastName'>
                 <!--LastName error message-->
                 <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("LastName").invalid &&
-                updateForm.get("LastName").touched && updateForm.get("firstName").errors?.required'>LastName is required</small>
+                updateForm.get("LastName").touched && updateForm.get("LastName").errors?.required'>LastName is required</small>
               </div>
 
               <!--Gender input-->
@@ -110,7 +110,7 @@
                 updateForm.get("Email").touched && updateForm.get("Email").errors?.required'>Email is required</small>
                  <!--Email error message 2-->
                 <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("Email").invalid &&
-                updateForm.get("Email").touched && updateForm.get("Email").errors?.Email'>Email format is not correct</small>
+                updateForm.get("Email").touched && updateForm.get("Email").errors?.email'>Email format is not correct</small>
               </div>
 
               <!--IRDNumber number input-->
@@ -135,7 +135,7 @@
                   🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠 value的值可能会更改 因为暂时不知道用id还是用name
                   可能的值： value={{i.LangId}}, value={{i.LangName}}
                 -->
-                <input #lan type="checkbox" name='Language' id='i.LangName' class='col-7 tl_muf_inputs' [checked]='ifLanguagesChecked(i.LangId)' value={{i.LangName}} formControlName='Language'>
+                <input #lan type="checkbox" name='Language' id='i.LangName' class='col-7 tl_muf_inputs' [checked]='ifLanguagesChecked(i.LangId)' value={{i.LangId}} formControlName='Language'>
               </div>
             </div>
           </div>
@@ -185,7 +185,7 @@
           <div *ngFor='let i of availableDays' class='col-4 tl_muf_weeks'>
             <div class='row tl_muf_each_week'>
               <div class='col-12 tl_muf_each_week_title'>{{i | weekFormat}}</div>
-              <div *ngFor='let j of getOrgs(i)' class='col-12 tl_muf_orgName'>{{j}}</div>
+              <div *ngFor='let j of getOrgs(i)' class='col-12 tl_muf_orgName'>{{j | orgFormat}}</div>
             </div>
           </div>
           

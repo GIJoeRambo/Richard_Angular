@@ -16,6 +16,7 @@ import { GenderFormatPipe } from '../assets/shared/pipes/gender-format.pipe';
 import { IdType } from './id-type.enum';
 import { FirstNameComponent } from './form-group/first-name/first-name.component';
 import { WeekFormatPipe } from '../assets/shared/pipes/week-format.pipe';
+import { OrgFormatPipe } from '../assets/shared/pipes/org-format.pipe';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { WeekFormatPipe } from '../assets/shared/pipes/week-format.pipe';
     ModalUpdateFormComponent,
     GenderFormatPipe,
     FirstNameComponent,
-    WeekFormatPipe
+    WeekFormatPipe,
+    OrgFormatPipe
   ],
   imports: [
     BrowserModule,

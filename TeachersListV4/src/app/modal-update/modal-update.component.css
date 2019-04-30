@@ -12,3 +12,6 @@
     border: 1px solid #343a40;
     color:white;
 }
+.tl_mu_submit_error{
+    color: #dc3545;
+}
