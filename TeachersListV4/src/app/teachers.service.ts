@@ -26,4 +26,8 @@ export class TeachersService {
   getApis(){
     return this.apisFromService;
   }
+
+  addNew(data){
+    return this.http.post(this.url+'teacherregister',data)
+  }
 }

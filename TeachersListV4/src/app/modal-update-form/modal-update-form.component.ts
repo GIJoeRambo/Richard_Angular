@@ -44,7 +44,7 @@ export class ModalUpdateFormComponent implements OnInit {
         LastName: [null, Validators.required],
         Gender: [null, Validators.required],
         Dob: [null, Validators.required],
-        Qualification: [null, Validators.required],
+        Qualificatiion: [null, Validators.required],
         MobilePhone: [null, Validators.required],
         HomePhone: [null, Validators.required],
         Email: [null, [Validators.required, Validators.email]],
@@ -64,7 +64,7 @@ export class ModalUpdateFormComponent implements OnInit {
         Gender: [{ value: this.witchTeacher.Gender, disabled: this.disabledAllInputsFlag }, Validators.required],
         //★★★★★只有当日期格式为YYYY-MM-DD的时候 才会显示出formControlName的默认值
         Dob: [{ value: this.dateFormat(this.witchTeacher.Dob), disabled: this.disabledAllInputsFlag }, Validators.required],
-        Qualification: [{ value: this.teacherQualiName, disabled: this.disabledAllInputsFlag }, Validators.required],
+        Qualificatiion: [{ value: this.teacherQualiName, disabled: this.disabledAllInputsFlag }, Validators.required],
         MobilePhone: [{ value: this.witchTeacher.MobilePhone, disabled: this.disabledAllInputsFlag }, Validators.required],
         HomePhone: [{ value: this.witchTeacher.HomePhone, disabled: this.disabledAllInputsFlag }, Validators.required],
         Email: [{ value: this.witchTeacher.Email, disabled: this.disabledAllInputsFlag }, [Validators.required, Validators.email]],

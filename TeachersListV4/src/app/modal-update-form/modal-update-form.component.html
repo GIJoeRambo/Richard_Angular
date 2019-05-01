@@ -64,14 +64,14 @@
 
               <!--Qualification input-->
               <div class='col-7 tl_muf_form'>
-                <label for="Qualification" class='col-4 tl_muf_lables'>Qualification:</label>
-                <select type='text' name="Qualification" id="Qualification" class='col-8 tl_muf_inputs' [class.error_border]='updateForm.get("Qualification").invalid &&
-                updateForm.get("Qualification").touched' formControlName='Qualification'>
-                <option *ngFor='let i of qualificationsListFromService' value={{i.QualiName}}>{{i.QualiName}}</option>
+                <label for="Qualificatiion" class='col-4 tl_muf_lables'>Qualification:</label>
+                <select type='text' name="Qualificatiion" id="Qualificatiion" class='col-8 tl_muf_inputs' [class.error_border]='updateForm.get("Qualificatiion").invalid &&
+                updateForm.get("Qualificatiion").touched' formControlName='Qualificatiion'>
+                <option *ngFor='let i of qualificationsListFromService' value={{i.QualiId}}>{{i.QualiName}}</option>
                 </select> 
                 <!--Qualification error message-->
-                <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("Qualification").invalid &&
-                updateForm.get("Qualification").touched && updateForm.get("Qualification").errors?.required'>Qualification is required</small>
+                <small class='text-danger col-4 error_message' style='text-align: center' *ngIf='updateForm.get("Qualificatiion").invalid &&
+                updateForm.get("Qualificatiion").touched && updateForm.get("Qualificatiion").errors?.required'>Qualification is required</small>
               </div>
             </div>
 
@@ -199,7 +199,7 @@
               <div class='col-12'>{{i}}</div>
               <div *ngFor='let j of orgsListFromService' class='col-12'>
                 <label for="" class='col-10 tl_muf_each_week_label'>{{j.OrgName.replace('BRANCH','')}}</label>
-                <input #branches class='col-2 tl_muf_orgName' type='checkbox' name={{i}} value={{j.OrgName}} [checked] = 'ifBranchesChecked(j.OrgId,i)'>
+                <input #branches class='col-2 tl_muf_orgName' type='checkbox' name={{i}} value={{j.OrgId}} [checked] = 'ifBranchesChecked(j.OrgId,i)'>
               </div>
             </div>
           </div>
