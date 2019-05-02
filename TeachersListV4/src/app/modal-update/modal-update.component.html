@@ -15,7 +15,7 @@
 
 <!--modal footer-->
 <div class='modal-footer'>
-  <span *ngIf='isSubmitFail' class='tl_mu_submit_error'>Please fill all required inputs.</span>
+  <span class='tl_mu_submit_error'>{{errorMessage}}</span>
   <button *ngIf='command!== "Detail"' type='button' class='btn btn-outline-dark' (click)='submit()'>Save</button>
   <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
 </div>

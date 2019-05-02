@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewChild } from '@angular/core';
+import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Command } from 'protractor';
 import { NgbActiveModal, NgbPaginationNumber, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { TeachersService } from '../teachers.service';
@@ -14,9 +14,12 @@ export class ModalUpdateComponent implements OnInit {
   private originalValue;
   //是否所有表单都fill
   private isSubmitFail:boolean = false;
+  private errorMessage = '';
+  
 
   @Input() command;
   @Input() witchTeacher;
+  @Output() refresh = new EventEmitter;
 
   @ViewChild('modalUpdateFormComponent') modalUpdateFormComponentObj;
   constructor(private activeModal: NgbActiveModal,private teachersService:TeachersService) { }
@@ -33,17 +36,19 @@ export class ModalUpdateComponent implements OnInit {
     this.valueToBeSubmitted.Gender = this.checkGender();
     this.valueToBeSubmitted.IDType = this.checkIdType();
     this.valueToBeSubmitted.DayOfWeek = this.checkOrgs();
-    this.valueToBeSubmitted.Dob = this.checkDate(this.valueToBeSubmitted.Dob);
-    this.valueToBeSubmitted.ExpiryDate = this.checkDate(this.valueToBeSubmitted.ExpiryDate)
+    //this.valueToBeSubmitted.Dob = this.checkDate(this.valueToBeSubmitted.Dob);
+    //this.valueToBeSubmitted.ExpiryDate = this.checkDate(this.valueToBeSubmitted.ExpiryDate)
 
     //console.log(this.modalUpdateFormComponentObj.branchesCheckBox._results)
     console.log('submitted',this.valueToBeSubmitted);
-    console.log(typeof(this.valueToBeSubmitted.Dob))
+    console.log(typeof(this.valueToBeSubmitted.Dob));
+    console.log(this.modalUpdateFormComponentObj)
 
     //判断是否所有的表单都fill 如果有任何一项没有fill 就会使isSubmitFail的值为true
     for(let i in this.valueToBeSubmitted){
       if(this.valueToBeSubmitted[i] == null){
-        this.isSubmitFail = true;
+        //this.isSubmitFail = true;
+        this.errorMessage = 'Please fill all required inputs.';
         //用户点击save按钮后 遍历触摸(touch)所有的input表单 目的是触发表单的Validator
         for(let j in this.modalUpdateFormComponentObj.updateForm.controls)
         {
@@ -54,11 +59,12 @@ export class ModalUpdateComponent implements OnInit {
     }
 
  
-    this.isSubmitFail = false;
+    //this.isSubmitFail = false;
+    this.errorMessage = '';
 
     let submit = new FormData();
     submit.append('details',JSON.stringify(this.valueToBeSubmitted));
-    submit.append('IdPhoto','123456');
+    submit.append('IdPhoto',this.modalUpdateFormComponentObj.photoToSubmit);
     submit.append('Photo','123456')
 
     
@@ -68,9 +74,11 @@ export class ModalUpdateComponent implements OnInit {
       this.teachersService.addNew(submit).subscribe(
         (data)=>{
           console.log('success',data);
+          this.activeModal.close('Close click');
         },
         (error)=>{
-          console.log('Error', error)
+          this.errorMessage = error.error.ErrorMessage;
+          console.log('Error', error);
         }
       );
     }
@@ -184,5 +192,4 @@ export class ModalUpdateComponent implements OnInit {
     console.log(newDate);
     return newDate;
   }
-
 }

@@ -22,17 +22,7 @@ export class BodyComponent implements OnInit {
   constructor(private teachersService: TeachersService, private modalService: NgbModal) { }
 
   ngOnInit() {
-    this.teachersService.getTeachers().subscribe((data) => {
-      this.teachersList = data.Data;
-      //console.log(data)
-      // console.log(this.teachersList);
-      this.teachersListLength = data.Data.length; //length prop is under Data prop
-      this.temTeachersList = data.Data;
-      this.temTeachersListLength = data.Data.length;
-    },
-      (error) => { console.log(error) })
-
-    //this.update('aa',"aa");
+    this.getData();
   }
 
   //search method
@@ -68,7 +58,13 @@ export class BodyComponent implements OnInit {
 
   //update method
   update(command, witchTeacher) {
-    const modalRef = this.modalService.open(ModalUpdateComponent, { size: 'lg' })
+    const modalRef = this.modalService.open(ModalUpdateComponent, { size: 'lg'});
+    
+    let that = this;
+    modalRef.result.then(function(){
+      //怎么做到不同条件下不同反应
+      that.ngOnInit();
+    });
     if (command == "Edit") {
       modalRef.componentInstance.command = 'Edit';
     }
@@ -93,5 +89,18 @@ export class BodyComponent implements OnInit {
     modalRef.componentInstance.witchTeacher = witchTeacher;
   }
 
+  getData(){
+    this.teachersService.getTeachers().subscribe((data) => {
+      this.teachersList = data.Data;
+      //console.log(data)
+      // console.log(this.teachersList);
+      this.teachersListLength = data.Data.length; //length prop is under Data prop
+      this.temTeachersList = data.Data;
+      this.temTeachersListLength = data.Data.length;
+    },
+      (error) => { console.log(error) })
+
+    //this.update('aa',"aa");
+  }
 
 }

@@ -111,7 +111,7 @@ export class ModalUpdateFormComponent implements OnInit {
     if (this.command == 'Edit' || this.command == 'Detail') {
       if (this.witchTeacher.TeacherQualificatiion.length !== 0) {
         this.teacherQualiId = this.witchTeacher.TeacherQualificatiion[0].TeacherQualiId;
-        this.teacherQualiName = this.witchTeacher.TeacherQualificatiion[0].Quali.QualiName;
+        this.teacherQualiName = this.witchTeacher.TeacherQualificatiion[0].Quali.QualiId;
       }
       else {
         this.teacherQualiId = null;

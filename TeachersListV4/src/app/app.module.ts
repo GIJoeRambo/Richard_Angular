@@ -43,7 +43,8 @@ import { OrgFormatPipe } from '../assets/shared/pipes/org-format.pipe';
     ModalUpdateComponent,
     ModalDeleteComponent
   ],
-  providers: [TeachersService],
+  providers: [TeachersService,
+  Location],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
