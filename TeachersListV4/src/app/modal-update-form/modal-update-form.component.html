@@ -7,8 +7,8 @@
           <!--img area-->
           <div class='col-3 tl_muf_photo_area'>
             <!-- <img src={{witchTeacher.Photo}} alt=""> -->
-            <img class='tl_muf_photo' src="./assets/shared/img/photo.jpg" alt="">
-            <input *ngIf='!disabledAllInputsFlag' type="file" name="file" id="file" class="tl_muf_upload_img" /> 
+            <img class='tl_muf_photo' src="" alt="" id='photo'>
+            <input *ngIf='!disabledAllInputsFlag' type="file" name="file" id="file" class="tl_muf_upload_img" accept="image/*" (change)='img($event)' /> 
             <label *ngIf='!disabledAllInputsFlag' for="file" class='btn btn-sm tl_muf_upload_img_btn'><span class='fas fa-plus tl_muf_upload_img_title'></span></label> 
           </div>
           <!--input area-->

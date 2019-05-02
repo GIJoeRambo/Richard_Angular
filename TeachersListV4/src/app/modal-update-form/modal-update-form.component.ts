@@ -11,6 +11,8 @@ import { queueComponentIndexForCheck } from '@angular/core/src/render3/instructi
 })
 export class ModalUpdateFormComponent implements OnInit {
 
+  private photoToSubmit;
+  private path;
   private updateForm;
   private groupObj: any;
   private qualificationsListFromService;
@@ -185,5 +187,19 @@ export class ModalUpdateFormComponent implements OnInit {
       }
       //console.log(this.availableDays)
     }
+  }
+
+  img(event){
+    this.photoToSubmit = <File>event.target.files[0];
+    let reader = new FileReader();
+    let photoObj = document.getElementById ('photo')
+    
+
+    reader.onloadend = function(){
+      let result = this.result;
+      photoObj.setAttribute("src",result.toString());
+    }
+    reader.readAsDataURL(this.photoToSubmit);
+   
   }
 }

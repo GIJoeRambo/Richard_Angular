@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { Command } from 'protractor';
-import { NgbActiveModal, NgbPaginationNumber } from '@ng-bootstrap/ng-bootstrap';
+import { NgbActiveModal, NgbPaginationNumber, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 import { TeachersService } from '../teachers.service';
 
 @Component({
@@ -55,13 +55,19 @@ export class ModalUpdateComponent implements OnInit {
 
  
     this.isSubmitFail = false;
+
+    let submit = new FormData();
+    submit.append('details',JSON.stringify(this.valueToBeSubmitted));
+    submit.append('IdPhoto','123456');
+    submit.append('Photo','123456')
+
     
     //while push a stream of new data
     if(this.command == 'Add'){
       //this.valueToBeSubmitted = JSON.stringify(this.valueToBeSubmitted);
-      this.teachersService.addNew(this.valueToBeSubmitted).subscribe(
+      this.teachersService.addNew(submit).subscribe(
         (data)=>{
-          console.log('success')
+          console.log('success',data);
         },
         (error)=>{
           console.log('Error', error)
