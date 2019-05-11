@@ -1,0 +1,21 @@
+<!--modal header-->
+<div class="modal-header">
+    <h4 class="modal-title">{{command | commandFormat}}</h4>
+    <button type="button" class='btn btn-sm btn-info tl_dm_btn' aria-label="Close" (click)="activeModal.close('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  
+  <!--modal body-->
+  <div class='modal-body tl_md_body'>
+    Are you sure to delete <span class='t_dm_name'>{{whichTeacher.FirstName}} {{whichTeacher.LastName}}?</span>
+  </div>
+  
+  <!--modal footer-->
+  <div class='modal-footer'>
+    <span *ngIf='isDeleteSuccess' class='text-success'>Delete Success </span>
+    <span *ngIf='isDeleteFail' class='text-danger'>Delete Fail </span>
+    <button *ngIf='!isDeleteSuccess' type='button' class='btn btn-outline-dark' (click)='delete()'>Delete</button>
+    <button *ngIf='!isDeleteSuccess && !isDeleteFail' type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Cancel</button>
+    <button *ngIf='isDeleteSuccess || isDeleteFail' type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+  </div>

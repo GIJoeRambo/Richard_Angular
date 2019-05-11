@@ -8,13 +8,12 @@ import { BodyComponent } from './body/body.component';
 import { TeachersService } from './teachers.service';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { ModalUpdateComponent } from './modal-update/modal-update.component';
-import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
-import { ModalUpdateFormComponent } from './modal-update-form/modal-update-form.component';
+import { ModalUpdateComponent } from './body/modal-update/modal-update.component';
+import { ModalDeleteComponent } from './body/modal-delete/modal-delete.component';
+import { ModalUpdateFormComponent } from './body/modal-update/modal-update-form/modal-update-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { GenderFormatPipe } from '../assets/shared/pipes/gender-format.pipe';
 import { IdType } from './id-type.enum';
-import { FirstNameComponent } from './form-group/first-name/first-name.component';
 import { WeekFormatPipe } from '../assets/shared/pipes/week-format.pipe';
 import { OrgFormatPipe } from '../assets/shared/pipes/org-format.pipe';
 
@@ -28,7 +27,6 @@ import { OrgFormatPipe } from '../assets/shared/pipes/org-format.pipe';
     ModalDeleteComponent,
     ModalUpdateFormComponent,
     GenderFormatPipe,
-    FirstNameComponent,
     WeekFormatPipe,
     OrgFormatPipe
   ],

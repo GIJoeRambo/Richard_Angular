@@ -125,7 +125,8 @@
             </div>
 
             <!--line5-->
-            <div class='row' id='tl_muf_form_languages'>
+            <div class='row' id='tl_muf_form_languages' [class.error_border]='updateForm.get("Language").invalid &&
+            updateForm.get("Language").touched' >
               <div class='col-12 tl_muf_form' id='languages'>
                 Languages:
               </div>

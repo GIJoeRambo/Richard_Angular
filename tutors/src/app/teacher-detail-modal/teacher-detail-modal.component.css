@@ -1,0 +1,14 @@
+.t_dm_title{
+    font-weight: bold;
+    font-style: italic;
+}
+.t_dm_close_btn{
+    background: white;
+    border: 1px solid black;
+    color:black;
+}
+.t_dm_close_btn:hover{
+    background: #343A40;
+    border: 1px solid #343a40;
+    color:white;
+}

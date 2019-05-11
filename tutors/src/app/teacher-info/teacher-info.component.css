@@ -1,0 +1,89 @@
+table{
+    table-layout: fixed;
+    text-align: center;
+}
+.t_info_title{
+    height:80px;
+    font-size:30px;
+    font-weight: 330;
+    line-height: 80px;
+    color:grey;
+    text-align: center;
+}
+.t_sort_title:hover{
+    cursor: pointer;
+}
+.t_info_addnew_btn{
+    position: absolute;
+    top:0;
+    right:0;
+}
+.t_info_addnew_btn:hover{
+    cursor: pointer;
+}
+.t_info_search{
+    margin-bottom: 10px;
+}
+.t_info_search input{
+    float: left;
+    width: 180px;
+    height: 31px;
+    border: 0;
+    border: 1px solid #17a2b8;
+    border-radius: 5px;
+    font-size:18px;
+}
+.t_info_search_by{
+    float: left;
+    margin-left: 10px;
+    height: 31px;
+}
+.t_info_search_by span{
+    float: left;
+    line-height: 31px;
+    margin-right: 10px;
+}
+.t_info_search_by span{
+    cursor: pointer;
+}
+.t_info_search_by ul{
+    padding:0;
+    margin:0;
+}
+.t_info_search_by li{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    float: left;
+    margin-right:10px;
+    color:#17a2b8;
+    border: 1px solid #17a2b8;
+    border-radius: 5px;
+    line-height: 31px;
+    height: 31px;
+}
+.t_info_search_by li:hover{
+    cursor: pointer;
+}
+.t_info_table_btn{
+    font-size: 20px;
+    margin-left: 18px;
+    color:#55554f;
+}
+.t_info_table_btn:hover{
+    cursor: pointer;
+}
+.t_info_table_btn:nth-child(1):hover{
+    color:#17a2b8;
+}
+.t_info_table_btn:nth-child(2):hover{
+    color:#ffc107;
+}
+.t_info_table_btn:nth-child(3):hover{
+    color:#dc3545;
+}
+
+.t_selected{
+    background: #17a2b8;
+    color:white!important;
+}

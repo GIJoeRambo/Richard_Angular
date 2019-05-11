@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TeachersService } from '../teachers.service';
 import { NgbModal, NgbModalRef } from '@ng-bootstrap/ng-bootstrap';
-import { ModalUpdateComponent } from '../modal-update/modal-update.component';
-import { ModalDeleteComponent } from '../modal-delete/modal-delete.component';
+import { ModalUpdateComponent } from './modal-update/modal-update.component';
+import { ModalDeleteComponent } from './modal-delete/modal-delete.component';
 
 @Component({
   selector: 'app-body',
@@ -67,6 +67,7 @@ export class BodyComponent implements OnInit {
     });
     if (command == "Edit") {
       modalRef.componentInstance.command = 'Edit';
+    
     }
     if (command == "Add") {
       modalRef.componentInstance.command = "Add";
@@ -84,6 +85,7 @@ export class BodyComponent implements OnInit {
 
   //showDetail method
   showDetail(command, witchTeacher) {
+  
     const modalRef = this.modalService.open(ModalUpdateComponent, { size: 'lg' })
     modalRef.componentInstance.command = 'Detail';
     modalRef.componentInstance.witchTeacher = witchTeacher;

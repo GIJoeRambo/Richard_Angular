@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild, Output, EventEmitter } from '@angular/core';
 import { Command } from 'protractor';
 import { NgbActiveModal, NgbPaginationNumber, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
-import { TeachersService } from '../teachers.service';
+import { TeachersService } from '../../teachers.service';
 
 @Component({
   selector: 'app-modal-update',

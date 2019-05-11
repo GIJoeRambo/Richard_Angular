@@ -1,0 +1,59 @@
+<div class='container'>
+  <div class='row'>
+    <!--info page header-->
+    <div class='col-12 t_info_title'>
+      Teachers Info
+      <div class='btn btn-info t_info_addnew_btn' (click)='popUpModal(0,null)'>+ Add More</div>
+    </div>
+
+    <!--info page search-->
+    <div class='col-12 t_info_search'>
+      <input id='searchingInput' type="text" placeholder="Search by..." (input)='onSearch($event)'>
+      <div class='t_info_search_by'>
+        <!--DO NOT TOUCH [flag] ATTRIBUTES-->
+        <span class='fas fa-search' id='searchingSelection' (click)='showSearchingSelection($event)'></span>
+        <ul id='t_info_search_by_btn' style='display: none'>
+          <!--DO NOT TOUCH [class] ATTRIBUTES-->
+          <li *ngFor='let i of columnsToShow' class isSelect (click)='showSelectStyle($event)'>{{i}}</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!--info page table-->
+    <div class='col-12'>
+      <table class='table table-striped'>
+        <!--table header-->
+        <thead>
+          <tr>
+            <th scope='col' style='width: 50px'>#</th>
+            <th *ngFor='let i of columnsToShow' scope='col' style='width: 150px' (click)='onSort(i)' counter='0'
+              style='width: 150px' class='t_sort_title'>
+              {{AddSpaceInString(i)}}</th>
+            <th scope='col' style='width: 150px'></th>
+          </tr>
+        </thead>
+        <!--table body-->
+        <tbody>
+          <!--pagination is here-->
+          <tr *ngFor='let i of teachersList | slice: (currentPage-1)* pageSize : (currentPage-1) * pageSize + pageSize; let index = index'>
+            <th scope="row">{{index + 1}}</th>
+            <td *ngFor='let j of columnsToShow'>{{i[j]}}</td>
+            <td>
+              <span class='t_info_table_btn' (click)='popUpModal(1,i)'><span class='fas fa-info-circle'></span></span>
+              <span class='t_info_table_btn' (click)='popUpModal(2,i)'><span class='fas fa-pen'></span></span>
+              <span class='t_info_table_btn' (click)='popUpModal(3,i)'><span class='fas fa-trash-alt'></span></span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!--info page pagination-->
+    <div class='col-12'>
+      <!--pagination is here-->
+      <ngb-pagination [collectionSize]='teachersListLength' [(page)]='currentPage' [pageSize]='pageSize'></ngb-pagination>
+    </div>
+
+  </div>
+</div>

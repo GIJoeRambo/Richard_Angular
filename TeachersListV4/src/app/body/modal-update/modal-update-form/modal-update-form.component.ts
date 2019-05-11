@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, ViewChild, ViewChildren } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { TeachersService } from '../teachers.service';
+import { TeachersService } from '../../../teachers.service';
 import { Command } from 'protractor';
 import { queueComponentIndexForCheck } from '@angular/core/src/render3/instructions';
 

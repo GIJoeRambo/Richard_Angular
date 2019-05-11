@@ -1,0 +1,201 @@
+<div class='t_mf_form'>
+  <form action='' [formGroup]='updateForm'>
+    <div class='row'>
+      <!--上半部分-->
+      <div class='col-12'>
+        <div class='row'>
+          <!--img area-->
+          <div class='col-4'>
+            <div class='row'>
+              <div class='col-6'>
+                <div class='t_mf_img_switch t_mf_img_switch_left'>
+                  <span class='fas fa-image'></span><span> Teacher</span>
+                </div>
+              </div>
+              <div class='col-6'>
+                <div class='t_mf_img_switch t_mf_img_switch_right'>
+                  <span class='fas fa-address-card'></span><span> Id</span>
+                </div>
+              </div>
+            </div>
+            <div class='row t_mf_img'>
+              sdasd
+            </div>
+          </div>
+
+          <!--input area-->
+          <div class='col-8'>
+            <div style="margin-right:10px">
+              <div class='t_mf_imput_right'>
+                <!--line1-->
+                <div>
+                  <!--line1 label-->
+                  <div class='row'>
+                    <div class='col-6'>
+                      <label for='FirstName' style='margin-right: 10px' class='t_mf_label'>First Name:</label>
+                    </div>
+                    <div class='col-6'>
+                      <label for='LastName' style='margin-left: 10px' class='t_mf_label'>Last Name:</label>
+                    </div>
+                  </div>
+                  <!--line1 input-->
+                  <div class='row'>
+                    <div class='col-6'>
+                      <input name='FirstName' type="text" style='margin-right: 10px' class='col-12 t_mf_input'>
+                    </div>
+                    <div class='col-6'>
+                      <input name='LastName' type="text" style='margin-left: 10px' class='col-12 t_mf_input'>
+                    </div>
+                  </div>
+                </div>
+
+                <!--line2-->
+                <div>
+                  <!--line2 label-->
+                  <div class='row'>
+                    <div class='col-6'>
+                      <label for='Dob' style='margin-right: 10px' class='t_mf_label'>Date Of Birth:</label>
+                    </div>
+                    <div class='col-6'>
+                      <label for='Gender' style='margin-left: 10px' class='t_mf_label'>Gender:</label>
+                    </div>
+                  </div>
+                  <!--line2 input-->
+                  <div class='row'>
+                    <div class='col-6'>
+                      <input name='Dob' type="date" style='margin-right: 10px' class='col-12 t_mf_input'>
+                    </div>
+                    <div class='col-6'>
+                      <select name='Gender' type="text" style='margin-left: 10px' class='col-12 t_mf_input'>
+                        <option value="0">Female</option>
+                        <option value="1">Male</option>
+                        <option value="2">Other</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <!--line3-->
+                <div>
+                  <!--line3 label-->
+                  <div class='row'>
+                    <div class='col-6'>
+                      <label for='MobilePhone' style='margin-right: 10px' class='t_mf_label'>Mobile Phone:</label>
+                    </div>
+                    <div class='col-6'>
+                      <label for='HomePhone' style='margin-left: 10px' class='t_mf_label'>Home Phone:</label>
+                    </div>
+                  </div>
+                  <!--line3 input-->
+                  <div class='row'>
+                    <div class='col-6'>
+                      <input name='MobilePhone' type="text" style='margin-right: 10px' class='col-12 t_mf_input'>
+                    </div>
+                    <div class='col-6'>
+                      <input name='HomePhone' type="text" style='margin-left: 10px' class='col-12 t_mf_input'>
+                    </div>
+                  </div>
+                </div>
+
+                <!--line4-->
+                <div>
+                  <!--line4 label-->
+                  <div class='row'>
+                    <div class='col-6'>
+                      <label for='Email' style='margin-right: 10px' class='t_mf_label'>Email:</label>
+                    </div>
+                    <div class='col-6'>
+                      <label for='IRDNumber' style='margin-left: 10px' class='t_mf_label'>IRDNumber:</label>
+                    </div>
+                  </div>
+                  <!--line4 input-->
+                  <div class='row'>
+                    <div class='col-6'>
+                      <input name='Email' type="text" style='margin-right: 10px; width:100%' class='t_mf_input'>
+                    </div>
+                    <div class='col-6'>
+                      <input name='IRDNumber' type="text" style='margin-left: 10px; width:100%' class='t_mf_input'>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--line5-->
+            <div style="margin-left:10px">
+              <!--line5 label-->
+              <div class='row'>
+                <div class='col-12'>
+                  <label for='Qualificatiion' class='t_mf_label'>Qualification:</label>
+                </div>
+              </div>
+              <!--line5 input-->
+              <div class='row'>
+                <div class='col-12'>
+                  <select name='Qualificatiion' type="text" style='width: 100%' class='t_mf_input'>
+                    <option *ngFor='let i of qualificationOptions' value={{i.QualiId}}>{{i.QualiName}}</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--下半部分-->
+      <div class='col-12'>
+        <div style="margin-right:10px">
+          <!--line6-->
+          <div>
+            <!--line6 label-->
+            <div class='row'>
+              <div class='col-4'>
+                <label for='IDType' class='t_mf_label'>ID Type:</label>
+              </div>
+              <div class='col-4'>
+                <label for='IDNumber' style='margin:0 5px' class='t_mf_label'>ID Number:</label>
+              </div>
+              <div class='col-4'>
+                <label for='ExpiryDate' style='margin-left: 10px' class='t_mf_label'>Expiry Date:</label>
+              </div>
+            </div>
+
+            <!--line6 input-->
+            <div class='row'>
+              <div class='col-4'>
+                <select name='IDType' type="text" class='col-12 t_mf_input'>
+                  <!--让后台传id type-->
+                  <option  value=""></option>
+                </select>
+              </div>
+              <div class='col-4'>
+                <input name='IDNumber' type="text" style='margin:0 5px' class='col-12 t_mf_input'>
+              </div>
+              <div class='col-4'>
+                <input name='ExpiryDate' type="date" style='margin-left:10px' class='col-12 t_mf_input'>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!--line7-->
+      <div class='col-12'>
+        <div class='row'>
+          <div class='col-12 t_mf_label' style='text-align: center'>
+            Languages:
+          </div>
+          <div class='col-12 t_mf_language'>
+            <div class='row'>
+              <!--ngFor-->
+              <div *ngFor='let i of languageOptions' class='col-3 t_mf_language_option'>
+                <label for={{i.LangName}} class='t_mf_label'>{{i.LangName}} &nbsp;</label>
+                <input type="checkbox" name={{i.LangName}} id={{i.LangName}} value={{i.LangId}}>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
