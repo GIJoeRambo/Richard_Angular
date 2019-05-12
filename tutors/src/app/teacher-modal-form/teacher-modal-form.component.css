@@ -8,10 +8,12 @@
     margin-right: 10px;
 }
 .t_mf_img_switch_left{
-    margin-right: 5px;
+    background: #343a40;
+    color:white;
 }
 .t_mf_img_switch_right{
-    margin-left: 5px;
+    background: #343a40;
+    color:white;
 }
 .t_mf_img_switch:hover{
     cursor: pointer;
@@ -51,4 +53,10 @@
     line-height: 30px;
     position: relative;
     top:3px;
+}
+
+.t_mf_error_border{
+    border: 1px solid #dc3545;
+    border-radius:5px;
+    outline: none;
 }

@@ -44,7 +44,7 @@ export class TeacherInfoComponent implements OnInit {
         this.teachersList = res.Data;
         this.teachersListCopy = this.teachersList;
         this.teachersListLength = res.Data.length;
-        console.log(this.teachersList)
+        //console.log(this.teachersList)
         //this.toggleLoadingGif('show')  'show' 'hide'
         this.toggleLoadingGif('hide');
       },
